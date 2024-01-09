@@ -22,3 +22,54 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+
+
+# Node.js and npm
+node_modules/
+
+# Angular
+/dist/
+/e2e/
+
+# Java
+/target/
+/.mvn/
+*.iml
+
+# IDE-specific files
+.idea/
+*.code-workspace
+*.project
+*.classpath
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*~
+
+# Build files
+*.jar
+*.war
+*.ear
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore application properties (customize as needed)
+/src/main/resources/application.properties
+
+# Ignore generated documentation
+/docs/
+
+# Ignore user-specific files
+.gradle/
+.vscode/
+*.suo
+*.user
+*.sln.docstates
