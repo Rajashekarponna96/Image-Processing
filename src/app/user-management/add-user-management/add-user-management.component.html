@@ -1,0 +1,112 @@
+<section id="image">
+  <div class=row>
+    <div class=" col-md-12 ">
+      <div class="row">
+        <div class="container-fluid">
+          <div class="row text-left">
+            <div class="col-md-8">
+              <div class="content-header" style="font-size: 20px">User Management</div>
+              <br>
+              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+                    style="font-size: 15px">Home</span></a>
+                <span style="font-size: 15px">/Create User</span>
+
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="card">
+      
+        <div class="card-body">
+          <div class="form-group">
+            <div class="col-md-12">
+
+              <form #registerForm="ngForm" class="form" novalidate>
+
+                
+                <div class="form-body">
+                  <button type="button" class="btn btn-raised btn-primary mr-2" routerLink="/user-management">
+                    <i class="ft-align-justify"></i> UsersList
+                  </button>
+                 
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="username">
+                          <span *ngIf="user.username == undefined || user.username =='' "
+                            style="color: red">*</span>User Name</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!username.valid && (username.dirty || username.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="username" class="form-control border-primary" name="username"
+                          [(ngModel)]="user.username" ngModel #username="ngModel" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">
+                          <span *ngIf="user.password == undefined || user.password =='' " style="color: red">*</span>
+                          Password</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!password.valid && (password.dirty || password.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="password" class="form-control border-primary" name="password"
+                          [(ngModel)]="user.password" ngModel #password="ngModel" required>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="roleSelect">Select Role</label>
+                          <select class="form-control border-primary" [(ngModel)]="role" required id="role" name="role">
+                            <option [ngValue]="role" *ngFor="let role of roles">
+                              {{role.name}} </option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-check">
+                        <label>Status</label><br> <label class="radio-inline mr-1">
+                          <input type="radio" name="isActive" [(ngModel)]="user.active" value=true
+                            ng-checked="!user.active"> Active
+                        </label> <label class="radio-inline"> <input type="radio" name="isActive"
+                            [(ngModel)]="user.active" value=false> Inactive
+                        </label>
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+
+                <div class="form-actions center">
+                  <button type="button" class="btn btn-raised btn-primary mr-1" (click)=" onSaveConfirm()"
+                  routerLink="/user-management" [disabled]="!registerForm.valid">
+                  <i class="fa fa-check-square-o"></i> Save
+                </button>
+                  <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/user-management">
+                    <i class="ft-x"></i> Cancel
+                  </button>
+                 
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>

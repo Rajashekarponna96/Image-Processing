@@ -1,0 +1,61 @@
+<ngx-spinner></ngx-spinner>
+<section id="minimal-statistics-bg">
+  <!-- <div class="row text-left">
+    <div class="col-12 mt-3 mb-1">
+      <div class="content-header"> HOI API Monitoring Tool</div>
+    </div>
+  </div>
+  <div class="form-actions c">
+    <div class="card-body">
+      <div class="places-buttons">
+        <div class="row">
+          <div *ngFor="let api of apis">
+            <button class="btn btn-primary" style="width: 280px; height: 130px; margin-right: 50px; margin-bottom:50px;"
+              (click)="viewStatus(api)">
+              <div>
+                <i [className]="api.cssClass"></i>
+              </div>
+              <span style="color: white; font-size : 12px ">{{api.appName}}&nbsp;&nbsp;-&nbsp;&nbsp;{{api.percent}}%
+                <br><br>Avg Latency : {{api.avgResponseTime}}ms
+                <br>&nbsp;Avg DNS Lookup Time : {{api.avgDNSLookupTime}}ms
+                <br>&nbsp;&nbsp;Avg TCPIP Connect Time : {{api.avgTCPIPConnectTime}}ms
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+<div  class="row">
+  <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+		<div class="card gradient-pomegranate">
+			<div class="card-content">
+				<div class="card-body pt-2 pb-0">
+					<div class="media">
+						<div class="media-body white text-center">
+								<button type="button" class="btn btn-raised " style="color:white"
+								routerLink="/reports/assessmentreport">
+								Store 1</button>
+						</div>
+          </div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+		<div class="card gradient-blackberry">
+			<div class="card-content">
+				<div class="card-body pt-2 pb-0">
+					<div class="media">
+						<div class="media-body white text-center">
+								<button type="button" class="btn btn-raised " style="color:white"
+								routerLink="/reports/assessmentreport">
+								Store2</button>
+						</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+</section>

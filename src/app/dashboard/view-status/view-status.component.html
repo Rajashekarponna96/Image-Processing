@@ -1,0 +1,44 @@
+<ngx-spinner ></ngx-spinner>
+<section id="simple">
+  <div class="row text-left">
+    <div class="col-sm-12">
+      <div class="card">
+          <div class="card-header pb-2">
+              <h4 class="card-title" id="basic-layout-colored-form-control">URL Details: {{appURL}}</h4>
+              <button type="button"class="btn btn-raised btn-warning"                      
+              routerLink="/dashboard">
+              <i class="ft-x"></i> Back
+          </button>
+          </div>
+        <div class="card-body">
+          <div class="col-sm-12">
+
+            <table class="table table-responsive-md ">
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Status</th>
+                  <th>Latency</th>
+                  <th>DNS LookUp Time</th>
+                  <th>TCP IP ConnectTime</th>
+                  <th>Date & Time</th>
+                </tr> 
+              </thead>
+              <tbody *ngFor="let status of statuses; index as i">
+                <tr>
+                  <td>{{i+1}}</td>
+                  <td>{{status.status}}</td>
+                  <td>{{status.responseTime}}ms</td>
+                  <td>{{status.dnsLookupTime}}ms</td>
+                  <td>{{status.tcpIPConnectTime}}ms</td>
+                  <td>{{status.createdAt|date:'dd-MM-yyyy HH:mm:ss'}}</td>
+                 
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

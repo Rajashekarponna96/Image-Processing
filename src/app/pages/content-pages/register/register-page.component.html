@@ -1,0 +1,372 @@
+<!--Login Page Starts-->
+<ngx-spinner></ngx-spinner>
+<section id="login">
+    <div class="container-fluid">
+        <div class="row full-height-vh m-0">
+            <div class="col-12 d-flex align-items-center justify-content-center">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body login-img">
+                            <div class="row ">
+                                <div class="col-lg-6 d-lg-block d-none py-2 px-3 text-center align-bottom">
+                                    <img src="../../assets/img/gallery/Ho.png" alt="" class="img-fluid mt-5" width="180"
+                                        height="180" />
+                                    <h4 style="color: white;text-decoration:blanchedalmond"><b>API MONITORING TOOL</b>
+                                    </h4>
+                                </div>
+                                <div class="col-lg-6 col-md-12 bg-white px-4 pt-3">
+                                    <h4 class="card-title mb-2">Register User</h4>
+                                    <hr>
+                                    <!-- <p class="card-text mb-3">
+                   Please Register Here To Login.
+                  </p> -->
+                                    <form #registerForm="ngForm" class="form" novalidate>
+                                        <div class="form-body">
+                                            <!-- <h4 class="form-section"><i class="ft-info"></i> About User
+                        </h4> --><div>
+                                            <label class="form-control-label" for="firstName">
+                                                <span *ngIf="user.firstName == undefined || user.firstName =='' "
+                                                    style="color: red">*</span>First Name</label>
+                                            <span class=" text-muted danger"
+                                                *ngIf="!firstName.valid && (firstName.dirty || firstName.touched)">
+                                                is required!
+                                            </span>
+                                            <input type="text" id="firstName" class="form-control border-primary"
+                                                ngModel #firstName="ngModel" required name="firstName"
+                                                [(ngModel)]="user.firstName">
+
+</div>
+<div>
+
+                                            <label class="form-control-label" for="lastName">
+                                                <span *ngIf="user.lastName == undefined || user.lastName =='' "
+                                                    style="color: red">*</span>
+                                                Last Name</label>
+                                            <span class=" text-muted danger"
+                                                *ngIf="!lastName.valid && (lastName.dirty || lastName.touched)">
+                                                is required!
+                                            </span>
+                                            <input type="text" id="lastName" class="form-control border-primary" ngModel
+                                                #lastName="ngModel" required name="lastName"
+                                                [(ngModel)]="user.lastName">
+                                                </div>
+                                            <!-- <h4 class="form-section"><i class="ft-mail"></i> Contact
+                            Info & Bio</h4> -->
+                            <div>
+                                            <label class="form-control-label" for="email"><code> <span *ngIf="user.email == undefined || user.email =='' "
+                                        style="color: red">*</span></code>Email</label>
+
+                                            <input class="form-control border-primary" ngModel #firstName="ngModel"
+                                                required [(ngModel)]="user.email" #email="ngModel" id="email"
+                                                name="email" type="email" required
+                                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                            <div *ngIf="email.touched&&email.invalid">
+                                                <span class="form-text text-muted danger" *ngIf="email.errors.required">
+                                                    please provide email id
+                                                </span>
+                                                <span class="form-text text-muted danger" *ngIf="email.errors.pattern">
+                                                    your enter email address is invalid
+                                                </span>
+                                            </div>
+
+</div><div>
+                                            <label class="form-control-label" for="password"><code><span *ngIf="user.password == undefined || user.password =='' "
+                                                style="color: red">*</span></code>Password</label>
+                                                <input [type]="show ? 'text' : 'password'"
+                                                    class="form-control border-primary" ngModel #firstName="ngModel"
+                                                    required placeholder="Password" [(ngModel)]="user.password"
+                                                    #password="ngModel" id="password" name="password" required
+                                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"> <button type="button"
+                                                    class="btn btn-raised btn-primary" (click)="showPassword()">
+                                                    <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                                </button>
+                                                <div class="form-text text-muted danger"
+                                                    *ngIf="password.touched&&password.invalid">
+                                                    <span *ngIf="password.errors.required">
+                                                        please provide password
+                                                    </span>
+                                                    <span *ngIf="password.errors.pattern">
+                                                        Must contain at least one number <br> One uppercase and lowercase
+                                                        letter<br> Atleast 8 or more characters.
+                                                    </span>
+                                                </div>
+
+</div>
+<div>
+                                            <label class="form-control-label" for="mobilenumber"><code><span *ngIf="user.phoneNumber == undefined || user.phoneNumber =='' "
+                                            style="color: red">*</span></code>Mobile Number</label>
+                                            <input class="form-control border-primary" ngModel #firstName="ngModel"
+                                                required [(ngModel)]="user.phoneNumber" #mobilenumber="ngModel"
+                                                id="mobilenumber" name="mobilenumber" type="number"
+                                                pattern="^[6-9]\d{9}$" maxlength="10" required>
+                                            <div *ngIf="mobilenumber.touched&&mobilenumber.invalid">
+                                                <span class="form-text text-muted danger"
+                                                    *ngIf="mobilenumber.errors.required">
+                                                    Please enter mobile number
+                                                </span>
+                                                <span class="form-text text-muted danger"
+                                                    *ngIf="mobilenumber.errors.pattern">
+
+                                                    you enter mobile number is invliad & provide 10 digits numbers
+
+                                                </span>
+                                            </div>
+                                            </div>
+                                            <div>
+
+                                            <label>Status</label><br> <label class="radio-inline">
+                                                <input type="radio" name="isActive" [(ngModel)]="user.active" value=true
+                                                    ng-checked="!addUser.active">Active
+                                            </label> <label class="radio-inline"> <input type="radio" name="isActive"
+                                                    [(ngModel)]="user.active" value=false>Inactive
+                                            </label>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                           
+                                        
+
+                                        <div class="fg-actions d-flex justify-content-between">
+                                            <div class="login-btn">
+                                                <button type="button" class="btn btn-raised btn-warning mr-1"
+                                                    routerLink="/pages/login">
+                                                    <i class="ft-x"></i> Cancel
+                                                </button>
+                                                <button type="button" class="btn btn-raised btn-primary"
+                                                    [disabled]="!registerForm.valid" (click)="registerUser()"
+                                                    routerLink="/pages/login">
+                                                    <i class="fa fa-check-square-o"></i> Register
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Login Page Ends-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<section id="image">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header pb-2">
+                <h4 class="card-title" id="basic-layout-colored-form-control">Register User</h4>
+    
+            </div>
+            <div class="card-content">
+                <div class="px-3">
+    
+                    <form  #registerForm="ngForm" class="form" novalidate>
+                        <div class="form-body">
+                            <h4 class="form-section"><i class="ft-info"></i> About User
+                            </h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="firstName">
+                                            <span *ngIf="user.firstName == undefined || user.firstName =='' "
+                                            style="color: red">*</span>First Name</label>
+                                            <span class=" text-muted danger"
+                                            *ngIf="!firstName.valid && (firstName.dirty || firstName.touched)">
+                                            is required!
+                                          </span>
+                                        <input type="text" id="firstName"
+                                            class="form-control border-primary" ngModel #firstName="ngModel" required
+                                            name="firstName"
+                                            [(ngModel)]="user.firstName">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="lastName">
+                                            <span *ngIf="user.lastName == undefined || user.lastName =='' "
+                                            style="color: red">*</span>
+                                            
+                                            Last Name</label>
+                                            <span class=" text-muted danger"
+                                            *ngIf="!lastName.valid && (lastName.dirty || lastName.touched)">
+                                            is required!
+                                          </span>
+                                        <input type="text" id="lastName"
+                                            class="form-control border-primary" ngModel #lastName="ngModel" required
+                                            name="lastName" [(ngModel)]="user.lastName" >
+                                    </div>
+                                   
+
+
+
+
+                                </div>
+                            </div>
+    
+                            <h4 class="form-section"><i class="ft-mail"></i> Contact
+                                Info & Bio</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="email"><code> <span *ngIf="user.email == undefined || user.email =='' "
+                                            style="color: red">*</span></code>Email</label>
+                                       
+                                        <input class="form-control border-primary" ngModel #firstName="ngModel" required
+                                        [(ngModel)]="user.email" #email="ngModel"  id="email" name="email" type="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                        <div *ngIf="email.touched&&email.invalid">
+                                            <span class="form-text text-muted danger" *ngIf="email.errors.required">
+                                                  please provide email id
+                                            </span>
+                                                
+                                            <span  class="form-text text-muted danger" *ngIf="email.errors.pattern">
+                                              your enter email address is invalid
+                                            </span>
+                                        </div>
+                                      </div>
+                                </div>
+    
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <input matInput
+                                            class="form-control border-primary"
+                                            id="phoneNumber" type="text"
+                                            name="phoneNumber"
+                                            [(ngModel)]="user.phoneNumber"
+                                            maxlength="10" numberOnly>
+    
+    
+                                    </div> 
+
+                                    <div class="form-group">
+                                        <label class="form-control-label" for="moiblenumber"><code><span *ngIf="user.phoneNumber == undefined || user.phoneNumber =='' "
+                                            style="color: red">*</span></code>Mobile Number</label>
+                                        <input class="form-control border-primary" ngModel #firstName="ngModel" required
+                                        [(ngModel)]="user.phoneNumber" #moiblenumber="ngModel"  id="moiblenumber" name="moiblenumber" type="number" pattern="^[6-9]\d{9}$" maxlength="10" required>
+                                        <div *ngIf="moiblenumber.touched&&moiblenumber.invalid">
+                                                <span class="form-text text-muted danger" *ngIf="moiblenumber.errors.required">
+                                                     Please enter mobile number
+                                                </span>
+                                                
+                                                <span class="form-text text-muted danger" *ngIf="moiblenumber.errors.pattern">
+                          
+                                                  you enter mobile number is invliad & provide 10 digits  numbers
+                          
+                                              </span>
+                                              
+                                                
+                                                
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>PassWord</label>
+                                        <input class="form-control border-primary"
+                                            id="password" type="text"
+                                            name="password"
+                                            [(ngModel)]="user.password"
+                                            >
+                                    </div>
+                                </div> 
+                                <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label" for="password"><code><span *ngIf="user.password == undefined || user.password =='' "
+                                        style="color: red">*</span></code>Password</label>
+                                    <input [type]="show ? 'text' : 'password'" class="form-control border-primary" ngModel #firstName="ngModel" required
+                                    placeholder="Password" [(ngModel)]="user.password" #password="ngModel" 
+                                     id="password" name="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"> <button type="button" class="btn btn-raised btn-primary"
+                                     (click)="showPassword()" ><i class="fa fa-eye"></i>
+                                     </button>
+                                   
+                                   <div class="form-text text-muted danger" *ngIf="password.touched&&password.invalid">
+                                       <span *ngIf="password.errors.required">
+                                            please  provide password
+                                       </span>
+                                       <span *ngIf="password.errors.pattern">
+                                        Must contain at least one number <br> One uppercase and lowercase letter<br> Atleast 8 or more characters.
+                                       </span>
+                      
+                                   </div>
+                                   </div>
+                                  </div>
+                                <div class="col-md-6">
+                                     <div class="form-group">
+                                        <fieldset class="form-group" for="selectedUser">
+                                            <label>Select User</label>
+                                            <select class="form-control" required
+                                                id="selectedUser" name="selectedUser"  [(ngModel)]="user.role">
+                                                <option>Select User</option>
+                                                <option>Admin</option>
+                                                <option>User</option>
+    
+                                            </select>
+                                        </fieldset>
+                                    </div> 
+
+                                    
+                                     <div class="form-group">
+                                            <label for="selectedUser">Selected User</label>
+                                            <input type="text" id="selectedUser"
+                                                class="form-control border-primary"
+                                                name="selectedUser" value="admin" [(ngModel)]="user.role" disabled>
+                                        </div>
+                                </div>
+                            </div>
+    
+    
+    
+    
+                        </div>
+                        <div class="form-group col-12 mb-2">
+                            <div class="form-check">
+                                <label>Status</label><br> <label class="radio-inline">
+                                    <input type="radio" name="isActive"
+                                        [(ngModel)]="user.active" value=true
+                                        ng-checked="!addUser.active">Active
+                                </label> <label class="radio-inline"> <input
+                                        type="radio" name="isActive"
+                                        [(ngModel)]="user.active" value=false>Inactive
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-actions center">
+                            <button type="button"
+                                class="btn btn-raised btn-warning mr-1"  routerLink="/pages/login">
+                                <i class="ft-x"></i> Cancel
+                            </button>
+                            <button type="button" class="btn btn-raised btn-primary" [disabled]="!registerForm.valid"
+                            (click)="registerUser()" routerLink="/pages/login" 
+                               >
+                                <i class="fa fa-check-square-o"></i> Register
+                            </button>
+                        </div>
+                    </form>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    </section> -->

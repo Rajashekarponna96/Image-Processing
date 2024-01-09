@@ -1,0 +1,107 @@
+<!-- <ngx-spinner></ngx-spinner> -->
+<section id="image">
+  <div class=row>
+    <div class=" col-md-12 ">
+      <div class="row">
+        <div class="container-fluid">
+          <div class="row text-left">
+            <div class="col-md-8">
+              <div class="content-header" style="font-size: 20px">Store Management</div>
+              <br>
+              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+                    style="font-size: 15px">Home</span></a>
+                <span style="font-size: 15px">/Assign Store</span>
+
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <div class="card-body">
+            <div class="form-group">
+              <div class="col-md-12">
+                <form class="form" #addClassForm="ngForm" novalidate>
+                  <div class="form-body">
+                    <button type="button" class="btn btn-raised btn-info " routerLink="/store/createstore">
+                      Create Store
+                    </button>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <fieldset class="form-group">
+                            <label for="storeSelect">Select Store</label>
+                            <select class="form-control border-primary" [(ngModel)]="store" required id="store"
+                              (change)='onStoreSelected(store.storeName)' name="store">
+                              <option [ngValue]="store" *ngFor="let store of stores">
+                                {{store.storeName}} </option>
+                            </select>
+                          </fieldset>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="address">Store Location
+                          </label>
+
+                          <input type="text" id="address" class="form-control border-primary" name="address"
+                            [(ngModel)]="selectedStore.address" disabled>
+
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="row">
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <fieldset class="form-group">
+                            <label for="roleSelect">Select Role</label>
+                            <select class="form-control border-primary" [(ngModel)]="role"
+                              (change)='onRoleSelected(role.name)' required id="role" name="role">
+                              <option [ngValue]="role" *ngFor="let role of roles">
+                                {{role.name}} </option>
+                            </select>
+                          </fieldset>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <fieldset class="form-group">
+                          <label for="storeSelect">Select User </label>
+                          <select required [(ngModel)]="employee" id="employee" name="employee"
+                            class="form-control border-primary">
+                            <option>Select User Name</option>
+                            <option [ngValue]="employee" *ngFor="let employee of employees">
+                              {{employee.username}} </option>
+                          </select>
+                        </fieldset>
+
+                      </div>
+
+
+                    </div>
+
+                  </div>
+                  <div class="form-actions center">
+
+                    <button type="button" class="btn btn-raised btn-primary mr-1"
+                      (click)="assignStore(store.id, employee.id)" [disabled]="!addClassForm.valid">
+                      <i class="fa fa-check-square-o"></i> Assign Store
+                    </button>
+                    <button type="button" class="btn btn-raised btn-warning">
+                      <i class="ft-x"></i> Cancel
+                    </button>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

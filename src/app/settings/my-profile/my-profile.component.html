@@ -1,0 +1,126 @@
+<section id="image">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-header pb-2">
+              <h4 class="card-title" id="basic-layout-colored-form-control">My
+                  Profile</h4>
+  
+          </div>
+          <div class="card-content">
+              <div class="px-3">
+  
+                  <form class="form">
+                      <div class="form-body">
+                          <h4 class="form-section"><i class="ft-info"></i> About User
+                          </h4>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label for="firstName">First Name</label>
+                                      <input type="text" id="firstName"
+                                          class="form-control border-primary"
+                                          name="firstName"
+                                          [(ngModel)]="user.firstName" disabled>
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label for="lastName">Last Name</label>
+                                      <input type="text" id="lastName"
+                                          class="form-control border-primary"
+                                          name="lastName" [(ngModel)]="user.lastName" disabled>
+                                  </div>
+                              </div>
+                          </div>
+  
+                          <h4 class="form-section"><i class="ft-mail"></i> Contact
+                              Info & Bio</h4>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label for="userinput5">Email</label>
+                                      <input class="form-control border-primary"
+                                          type="email" id="email"
+                                          [(ngModel)]=user.email name="email" disabled>
+                                  </div>
+                              </div>
+  
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label>Phone Number</label>
+                                      <input matInput
+                                          class="form-control border-primary"
+                                          id="phoneNumber" type="text"
+                                          name="phoneNumber"
+                                          [(ngModel)]="user.phoneNumber"
+                                          maxlength="10" numberOnly disabled>
+  
+  
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+  
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <fieldset class="form-group" for="referredBy">
+                                        <label>Select User</label>
+                                        <select class="form-control" required id="referredBy" name="referredBy"
+                                          [(ngModel)]="user.role" disabled>
+                                          <option>Select User</option>
+                                          <option>Admin</option>
+                                          <option>User</option>
+              
+                                        </select>
+                                      </fieldset>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    
+                                    <!-- <div *ngIf="user.role=='Admin'" class=" mb-1">
+              
+                                      <label>PassWord</label>
+                                      <input class="form-control border-primary" id="password" type="text" name="password"
+                                        [(ngModel)]="user.password">
+              
+                                    </div> -->
+                                    <div *ngIf="user.role=='User'" class=" mb-1">
+              
+                                      <label>Department Name</label>
+                                      <input class="form-control border-primary" id="departmentName" type="text" name="departmentName"
+                                        [(ngModel)]="user.departmentName" disabled>
+              
+                                    </div>
+                                  </div>
+                                </div>
+                      </div>
+                      <div class="form-group col-12 mb-2">
+                          <div class="form-check">
+                              <label>Status</label><br> <label class="radio-inline">
+                                  <input type="radio" name="isActive"
+                                      [(ngModel)]="user.active" value=true
+                                      ng-checked="!user.active">Active
+                              </label> <label class="radio-inline"> <input
+                                      type="radio" name="isActive"
+                                      [(ngModel)]="user.active" value=false>Inactive
+                              </label>
+                          </div>
+                      </div>
+                      <!-- <div class="form-actions center">
+                          <button type="button"
+                              class="btn btn-raised btn-warning mr-1"  routerLink="/user-management">
+                              <i class="ft-x"></i> Cancel
+                          </button>
+                          <button type="button" class="btn btn-raised btn-primary"
+                          (click)="updateUserManagement()" routerLink="/user-management"
+                             >
+                              <i class="fa fa-check-square-o"></i> Update
+                          </button>
+                      </div>  -->
+                  </form>
+  
+              </div>
+          </div>
+      </div>
+  </div>
+  </section>
