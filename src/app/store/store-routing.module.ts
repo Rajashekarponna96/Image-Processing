@@ -8,7 +8,7 @@ const routes: Routes = [
     path: 'createstore',
      component: CreatestoreComponent,
     data: {
-      title: 'Store Management'
+      title: 'Image Management'
     },
     
   },

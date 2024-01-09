@@ -30,6 +30,8 @@ export class LoginPageComponent {
   user = new UserAccount();
   @ViewChild('f', { static: false }) loginForm: NgForm;
   password: string;
+  // username: string;
+  email:string;
   
 
   constructor(private router: Router,
@@ -48,14 +50,20 @@ export class LoginPageComponent {
     this.router.navigate(['register'], { relativeTo: this.route.parent });
   }
 
+  // onLogin(username: string, password: string) {
+ 
   onLogin(email: string, password: string) {
-   // alert("Login Successfull" + email + password);
+ 
+  // alert("Login Successfull" + email + password);
   // this.router.navigate(['/dashboard']);
    this.spinner.show();
     var user = new UserAccount();
     user.password = this.password;
+    user.email = this.email;
+ 
+    // user.username = this.username;
     user.feature = "Admin";
-  //  localStorage.setItem("email",email);
+    //localStorage.setItem("email",email);
     //this.getIP();
     this.http.post<UserAccount>(environment.smartSafeAPIUrl+ '/userInfo/login', user, this.httpOptions).subscribe(
       res => {
@@ -63,7 +71,13 @@ export class LoginPageComponent {
         //event.confirm.resolve(event.newData);
         if (res) {
           localStorage.setItem('user', JSON.stringify(user));
-          this.router.navigate(['/dashboard']);
+          localStorage.setItem('userId', res.id+"");
+          // localStorage.setItem('userName', res.username+"");
+            localStorage.setItem('emaill', res.email+"");
+          localStorage.setItem('Role', res.role);
+          console.dir(res);
+
+         this.router.navigate(['/dashboard']);
           this.service.loginSuccess();
           this.spinner.hide();
           
