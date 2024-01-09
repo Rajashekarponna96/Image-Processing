@@ -1,12 +1,15 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { UserAccount } from 'app/model/user';
 import { environment } from 'environments/environment';
+import { NGXToastrService } from 'app/service/toastr.service';
+import { Role } from 'app/model/role';
 @Component({
     selector: 'app-register-page',
     templateUrl: './register-page.component.html',
-    styleUrls: ['./register-page.component.scss']
+    styleUrls: ['./register-page.component.scss'],
+    providers: [NGXToastrService]
 })
 
 export class RegisterPageComponent implements OnInit{
@@ -22,46 +25,70 @@ export class RegisterPageComponent implements OnInit{
     })
   } 
   
-    user=new UserAccount();
+  user = new UserAccount();
   users: UserAccount[];
-  
+
+  role = new Role();
+  roles: Role[];
 
 
-  constructor(private http: HttpClient,private router:Router) { 
+  constructor(private http: HttpClient, private router: Router, private service: NGXToastrService, private changeDetectorRefs: ChangeDetectorRef) {
     this.show = false;
+    this.getAllUsersList();
   }
-  registerUser() {
-    if (window.confirm('Are you sure you want to Save?')) {
-     
-      this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/saveuser',this.user, this.httpOptions).subscribe(
-        res => {
-          console.log(res);
+  getUserList() {
 
-          //event.confirm.resolve(event.newData);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/getusers', this.httpOptions);
+  }
 
-        },
-        (err: HttpErrorResponse) => {
-          if (err.error instanceof Error) {
-            console.log("Client-side error occured.");
-          } else {
-            console.log("Server-side error occured.");
-          }
-        });
-  
-    } else {
-      //event.confirm.reject();
-    }
+  getAllUsersList() {
+    return this.getUserList().
+      subscribe((data) => {
+        console.log(data);
+        this.users = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+  onSaveConfirm() {
+    this.user.role = this.role.name;
+    this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/userInfo/', this.user, this.httpOptions).subscribe(
+      res => {
+        console.log(res);
+        //event.confirm.resolve(event.newData);
+        this.service.addSuccess();
+      },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) {
+          console.log("Client-side error occured.");
+        } else {
+          console.log("Server-side error occured.");
+        }
+        this.service.typeWarning();
+      });
     console.log(JSON.stringify(this.user));
+    this.getAllUsersList();
   }
-
   showPassword() {
     this.show = !this.show;
-}
- 
-         
-  ngOnInit() {
-    this.user.role="Admin";
   }
+  getRoleList() {
+
+    return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/all');
+  }
+  getAllRolesList() {
+    return this.getRoleList().
+      subscribe((data) => {
+        console.log(data);
+        this.roles = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+
+  ngOnInit() {
+    this.getAllUsersList();
+    this.getAllRolesList();
+  }
+
 
   
 

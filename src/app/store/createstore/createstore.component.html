@@ -6,11 +6,11 @@
         <div class="container-fluid">
           <div class="row text-left">
             <div class="col-md-8">
-              <div class="content-header" style="font-size: 20px">Store Management</div>
+              <div class="content-header" style="font-size: 20px">Image Management</div>
               <br>
               <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
                     style="font-size: 15px">Home</span></a>
-                <span style="font-size: 15px">/Add Store</span>
+                <span style="font-size: 15px">/Add Image</span>
 
               </p>
             </div>
@@ -25,11 +25,13 @@
           <div class="card-body">
             <div class="form-group">
               <div class="col-md-12">
-                <form class="form" #addClassForm="ngForm" novalidate>
+
+                         
+                <!-- <form class="form" #addClassForm="ngForm" novalidate>
                   <div class="form-body">
-                    <button type="button" class="btn btn-raised btn-info " routerLink="/store/assignstore">
+                     <button type="button" class="btn btn-raised btn-info " routerLink="/store/assignstore">
                       Assign Store
-                     </button>
+                     </button> 
                     <div class="row">
                       <div class="col-md-4">
                         <div class="form-group">
@@ -148,7 +150,7 @@
                           </div>
                         </div>
                     
-                      <!-- <div class="col-md-6">
+                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="d-block">Configured</label>
                           <div class="input-group">
@@ -164,7 +166,7 @@
                             </div>
                           </div>
                         </div>
-                      </div> -->
+                      </div> 
                     </div>
                     <div class="row">
                       <div class="col-md-6">
@@ -193,7 +195,7 @@
                       <i class="ft-x"></i> Cancel
                     </button>
                   </div>
-                </form>
+                </form> -->
 
               </div>
             </div>
@@ -203,7 +205,9 @@
     </div>
   </div>
 </section>
-<section id="image">
+
+<!-- image to view -->
+<!-- <section id="image">
   <div class=row>
     <div class=" col-md-12 ">
       <div class="card">
@@ -212,7 +216,7 @@
           <div class="form-group">
             <section id="simple">
 
-              <!-- <div class="col-sm-6">
+              <div class="col-sm-6">
                 <form storeInfoRequest="search">
                   <div class="position-relative has-icon-right">
                     <input type="text" class="form-control round" placeholder="Search" name="search"
@@ -222,7 +226,7 @@
                     </div>
                   </div>
                 </form>
-              </div> -->
+              </div>
               <br>
               <div class="row text-left">
 
@@ -241,11 +245,11 @@
                         <th>Action</th>
                       </tr>
                     </thead>
-                    <!-- <tbody
-                        *ngFor="let storeInfoRequest of storeInfoRequests| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i"> -->
+                    <tbody
+                        *ngFor="let storeInfoRequest of storeInfoRequests| slice: (page-1) * pageSize : +((page-1) * pageSize) + +pageSize; index as i">
                     <tbody *ngFor="let storeInfoRequest of storeInfoRequests;index as i">
                       <tr>
-                        <!-- <td>{{i+1+(page-1) * pageSize}}</td> -->
+                        <td>{{i+1+(page-1) * pageSize}}</td>
                         <td>{{i+1}}</td>
                         <td>{{storeInfoRequest.corpStoreNo}}</td>
                         <td>{{storeInfoRequest.serialNumber}}</td>
@@ -258,11 +262,11 @@
                             placement="bottom" ngbTooltip="Edit">
                             <i class="ft-edit-2 font-medium-3 mr-2"></i>
                           </a>
-                          <!-- <a class="danger p-0" data-original-title="" title=""
+                          <a class="danger p-0" data-original-title="" title=""
                                                       (click)="deleteClass(class.id)">
                                                     
                                                       <i class="icon-trash font-medium-3 mr-2"></i>
-                                                  </a> -->
+                                                  </a>
                         </td>
                         <td><button type="button" class="btn btn-raised" disabled style="cursor:default"
                             [ngClass]="{' btn-primary' : storeInfoRequest.configured,'btn-warning' :!storeInfoRequest.configured }">
@@ -274,7 +278,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <!-- <div *ngIf="searchText != ''">
+                   <div *ngIf="searchText != ''">
                     <table class="table table-responsive-md text-center">
                       <thead>
                         <tr>
@@ -310,8 +314,8 @@
                         </tr>
                       </tbody>
                     </table>
-                  </div> -->
-                  <!-- <div class="row">
+                  </div> 
+                   <div class="row">
                     <div class="col-sm-6">
                       <div class="formgroup">
                         <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="classes.length"
@@ -328,7 +332,7 @@
                         </select>
                       </div>
                     </div>
-                  </div> -->
+                  </div> 
                 </div>
               </div>
             </section>
@@ -337,4 +341,68 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
+<!-- 1-->
+
+<!-- 1 -->
+<!-- <section id="image">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <form class="form" #imageUploadForm="ngForm" novalidate>
+          Your image upload form here 
+          </form>
+
+          Display uploaded images           <div class="row mt-3">
+            <div class="col-md-12">
+              <div class="d-flex flex-wrap">
+                <div *ngFor="let uploadedImage of uploadedImages">
+                  <img [src]="uploadedImage.url" alt="Uploaded Image" class="mr-3 mb-3" style="max-width: 200px; max-height: 200px;">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+
+<!-- image-upload.component.html -->
+<!-- 
+<div class="image_container" *ngIf="imageFile">
+  <h2>Uploaded Image:</h2>
+  <img [src]="getUploadedImageUrl()" alt="Uploaded image" width="200" height="400">
+  <div class="content">
+    <p>Image Dimensions:</p>
+    <p>Length: {{ wid }} cm</p>
+    <p>Width: {{ len }} cm</p>
+    <p>No. of Kernels: {{ count }} Kernels</p>
+  </div>
+</div>
+
+<h1 style="text-align: center;">Upload Image</h1>
+<form method="POST" id="upload-form" (submit)="uploadImage()" enctype="multipart/form-data" style="text-align: center;">
+  <input type="file" name="image" (change)="onFileChange($event)">
+  <input type="submit" value="Upload">
+</form> -->
+<!-- image-upload.component.html -->
+
+<div class="image_container" *ngIf="imageFile">
+  <h2>Uploaded Image:</h2>
+  <img [src]="getUploadedImageUrl()" alt="Uploaded image" width="200" height="400">
+  <div class="content">
+    <p>Image Dimensions:</p>
+    <p>Length: {{ wid }} cm</p>
+    <p>Width: {{ len }} cm</p>
+    <p>No. of Kernels: {{ count }} Kernels</p>
+  </div>
+</div>
+
+<h1 style="text-align: center;">Upload Image</h1>
+<form method="POST" id="upload-form" (submit)="uploadImage()" enctype="multipart/form-data" style="text-align: center;">
+  <input type="file" name="image" (change)="onFileChange($event)">
+  <input type="submit" value="Upload">
+</form>

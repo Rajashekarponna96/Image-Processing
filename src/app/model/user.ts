@@ -11,5 +11,6 @@ export class UserAccount{
 	active:boolean;
 
 	feature:string;
+  email: string;
     
 }

@@ -11,4 +11,5 @@ export class UserInfoRequest {
 	active:boolean;
 
 	feature:string;
+	email:string;
 }
