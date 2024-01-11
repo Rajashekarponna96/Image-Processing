@@ -49,15 +49,15 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="Organization">
-                          <span *ngIf="user.Organization == undefined || user.Organization =='' " style="color: red">*</span>
+                        <label class="form-control-label" for="organization">
+                          <span *ngIf="user.organization == undefined || user.organization =='' " style="color: red">*</span>
                           Organization</label>
                         <span class=" text-muted danger"
-                          *ngIf="!Organization.valid && (Organization.dirty || Organization.touched)">
+                          *ngIf="!organization.valid && (organization.dirty || organization.touched)">
                           is required!
                         </span>
-                        <input type="text" id="Organization" class="form-control border-primary" name="Organization"
-                          [(ngModel)]="user.Organization" ngModel #Organization="ngModel" required>
+                        <input type="text" id="organization" class="form-control border-primary" name="organization"
+                          [(ngModel)]="user.organization" ngModel #organization="ngModel" required>
                       </div>
                     </div>
                   </div>
