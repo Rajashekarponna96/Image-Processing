@@ -7,7 +7,7 @@
             <div class="col-md-8">
               <div class="content-header" style="font-size: 20px">User Management</div>
               <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard/dashboard1"><span
+              <p class="content-sub-header"> <a routerLink="/dashboard"><span
                     style="font-size: 15px">Home</span></a>
                 <span style="font-size: 15px">/Create User</span>
 
@@ -23,7 +23,7 @@
           <div class="form-group">
             <div class="col-md-12">
 
-              <form #registerForm="ngForm" class="form" novalidate>
+              <form  class="form" #addClassForm="ngForm" novalidate>
 
                 
                 <div class="form-body">
@@ -31,12 +31,14 @@
                     <i class="ft-align-justify"></i> UsersList
                   </button>
                  
+                  <!-- <h4 class="form-section"><i class="ft-info"></i> Info & Bio
+                  </h4> -->
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label" for="username">
                           <span *ngIf="user.username == undefined || user.username =='' "
-                            style="color: red">*</span>User Name</label>
+                            style="color: red">*</span>Name</label>
                         <span class=" text-muted danger"
                           *ngIf="!username.valid && (username.dirty || username.touched)">
                           is required!
@@ -47,55 +49,199 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="password">
-                          <span *ngIf="user.password == undefined || user.password =='' " style="color: red">*</span>
-                          Password</label>
+                        <label class="form-control-label" for="Organization">
+                          <span *ngIf="user.Organization == undefined || user.Organization =='' " style="color: red">*</span>
+                          Organization</label>
                         <span class=" text-muted danger"
-                          *ngIf="!password.valid && (password.dirty || password.touched)">
+                          *ngIf="!Organization.valid && (Organization.dirty || Organization.touched)">
                           is required!
                         </span>
-                        <input type="text" id="password" class="form-control border-primary" name="password"
-                          [(ngModel)]="user.password" ngModel #password="ngModel" required>
+                        <input type="text" id="Organization" class="form-control border-primary" name="Organization"
+                          [(ngModel)]="user.Organization" ngModel #Organization="ngModel" required>
                       </div>
                     </div>
                   </div>
+		            <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="email">
+                          <span *ngIf="user.email == undefined || user.email =='' "
+                            style="color: red">*</span>Email ID</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!email.valid && (email.dirty || email.touched)">
+                          is required!
+                        </span>
+                        <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control border-primary" name="email"
+                          [(ngModel)]="user.email" ngModel #email="ngModel" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="mobile">
+                          <span *ngIf="user.mobile == undefined || user.mobile =='' " style="color: red">*</span>
+                          
+                          Phone Number</label>
+                          
+                        <span class=" text-muted danger"
+                          *ngIf="!mobile.valid && (mobile.dirty || mobile.touched)">
+                          <span *ngIf="mobile.errors.required">is required!</span>
+                          <span *ngIf="mobile.errors.pattern"> Mobile No must be like 123-456-7890</span>
+                        </span>
+                                                
+                        <input required type="tel"  id="mobile" class="form-control border-primary" name="mobile"
+                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel"
+                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" required>
 
-
+                      </div>
+                    </div>
+                  </div>
                   <div class="row">
-
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="state">
+                          <span *ngIf="user.state == undefined || user.state =='' "
+                            style="color: red">*</span>State</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!state.valid && (state.dirty || state.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="state" class="form-control border-primary" name="state"
+                          [(ngModel)]="user.state" ngModel #state="ngModel" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="city">
+                          <span *ngIf="user.city == undefined || user.city =='' " style="color: red">*</span>
+                          City</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!city.valid && (city.dirty || city.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="city" class="form-control border-primary" name="city"
+                          [(ngModel)]="user.city" ngModel #city="ngModel" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <fieldset class="form-group">
                           <label for="roleSelect">Select Role</label>
-                          <select class="form-control border-primary" [(ngModel)]="role" required id="role" name="role">
-                            <option [ngValue]="role" *ngFor="let role of roles">
-                              {{role.name}} </option>
+                          <select class="form-control border-primary" [(ngModel)]="user.role" required id="role" name="role">
+                            <option value="OWNER">Owner</option>
+                            <option value="STORE_ADMIN">Store Admin</option>
+                            <option value="SUPER_ADMIN">Super Admin</option>
+                            <option value="manager">Manager</option>
+                            <option value="DIRECTOR_OF_OPERATION">Director Of Operation</option>
                           </select>
                         </fieldset>
                       </div>
                     </div>
 
                     <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="roleSelect">Select Password criteria</label>
+                          <select class="form-control border-primary" [(ngModel)]="user.passLength" required id="passLength" name="passLength">
+                            <option Value="four">
+                              4 DIGITS </option>
+                              <option value= "six" >6 DIGITS</option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">
+                          <span *ngIf="user.password == undefined || user.password =='' " style="color: red">*</span>
+                          Password</label>
+                          
+                        <span class=" text-muted danger"
+                          *ngIf="!password.valid && (password.dirty || password.touched)" >
+                          is required!
+                        </span>
+                        <input type="password" id="password" class="form-control border-primary" name="password"
+                          [(ngModel)]="user.password" ngModel #password="ngModel" required
+                           pattern="^[0-9]*$" [maxlength]="user.passLength" [minlength]="user.passLength">
+                      </div>
+                    </div>
+                   
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="reenterPassword">
+                          <span *ngIf="user.reenterPassword == undefined || user.reenterPassword =='' " style="color: red">*</span>
+                          Re-Enter Password</label>
+                          
+                        <span class=" text-muted danger"
+                          *ngIf="!reenterPassword.valid && (reenterPassword.dirty || reenterPassword.touched)" >
+                          is required!
+                        </span>
+                        <input type="reenterPassword" id="reenterPassword" class="form-control border-primary" name="reenterPassword"
+                          [(ngModel)]="user.reenterPassword" ngModel #reenterPassword="ngModel" required
+                           pattern="^[0-9]*$" [maxlength]="user.passLength" [minlength]="user.passLength">
+                      </div>
+                    </div>
+                    
+                    </div>
+
+                  <!-- <h4 class="form-section"><i class=""></i> Login Credentials
+                  </h4> -->
+                  
+
+                  
+
+                    
+                    <!-- <div class="row">
+                    <div class="col-md-6">
                       <div class="form-check">
                         <label>Status</label><br> <label class="radio-inline mr-1">
-                          <input type="radio" name="isActive" [(ngModel)]="user.active" value=true
+                          <input type="radio" name="isActive" [(ngModel)]="user.active" [value]=true
                             ng-checked="!user.active"> Active
-                        </label> <label class="radio-inline"> <input type="radio" name="isActive"
-                            [(ngModel)]="user.active" value=false> Inactive
+                        </label> 
+                        <label class="radio-inline"> <input type="radio" name="isActive"
+                            [(ngModel)]="user.active" [value]=false> Inactive
                         </label>
                       </div>
                     </div>
-
-
                   </div>
+                </div> -->
+
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="d-block">Status</label>
+                      <div class="input-group">
+                        <div class="custom-control custom-radio d-inline-block float-left">
+                          <input type="radio" checked id="active" name="active" class="custom-control-input"
+                            [value]=true [(ngModel)]="user.active">
+                          <label class="custom-control-label" for="active">Active</label>
+                        </div>
+                        <div class="custom-control custom-radio d-inline-block float-left ml-1">
+                          <input type="radio" id="inactive" name="inactive" class="custom-control-input"
+                            [value]=false [(ngModel)]="user.active">
+                          <label class="custom-control-label" for="inactive">In Active</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+
                 </div>
+
+
 
                 <div class="form-actions center">
                   <button type="button" class="btn btn-raised btn-primary mr-1" (click)=" onSaveConfirm()"
-                  routerLink="/user-management" [disabled]="!registerForm.valid">
+                  [disabled]="!addClassForm.valid">
                   <i class="fa fa-check-square-o"></i> Save
                 </button>
-                  <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/user-management">
+                  <button type="reset" class="btn btn-raised btn-warning mr-1" routerLink="/user-management">
                     <i class="ft-x"></i> Cancel
                   </button>
                  
@@ -110,3 +256,42 @@
     </div>
   </div>
 </section>
+
+<div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content1">
+          <div class="modal-header">
+              <h5 class="modal-title" style="color:white">Status</h5>
+          </div>
+          <div class="modal-body" style="color:white">
+              <h2 style="font-size: 20px;"><strong>{{dynamicText}}</strong></h2>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class ="btn btn-raised btn-primary mr-1" (click)="closePopup()">
+                 Ok
+              </button>
+          </div>
+      </div>
+  </div>
+</div> 
+
+<div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content1">
+          <div class="modal-header">
+              <h5 class="modal-title" style="color:white">Status</h5>
+          </div>
+          <div class="modal-body" style="color:white">
+              <h2 style="font-size: 20px;"><strong>{{dynamicText2}}</strong></h2>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class ="btn btn-raised btn-primary mr-1" (click)="closePopup1()">
+                 Yes
+              </button>
+              <button type="button" class ="btn btn-raised btn-warning" routerLink="/dashboard">
+                No
+             </button>
+          </div>
+      </div>
+  </div>
+</div> 

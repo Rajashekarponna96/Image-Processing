@@ -1,104 +1,3 @@
-<!-- <ngx-spinner></ngx-spinner>
-<section id="image">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="container-fluid">
-          <div class="row text-left"></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          <div class="form-group">
-            <div class="col-md-12">
-              <form #registerForm="ngForm" class="form" novalidate>
-                <div class="form-body">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="username">
-                          <span *ngIf="
-                              user.username == undefined || user.username == ''
-                            " style="color: red">*</span>User Name</label>
-                        <span class="text-muted danger" *ngIf="
-                            !username.valid &&
-                            (username.dirty || username.touched)
-                          ">
-                          is required!
-                        </span>
-                        <input type="text" id="username" class="form-control border-primary" name="username"
-                          [(ngModel)]="user.username" ngModel #username="ngModel" required />
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="password">
-                          <span *ngIf="
-                              user.password == undefined || user.password == ''
-                            " style="color: red">*</span>
-                          Password</label>
-                        <span class="text-muted danger" *ngIf="
-                            !password.valid &&
-                            (password.dirty || password.touched)
-                          ">
-                          is required!
-                        </span>
-                        <input type="text" id="password" class="form-control border-primary" name="password"
-                          [(ngModel)]="user.password" ngModel #password="ngModel" required />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <fieldset class="form-group">
-                          <label for="roleSelect">Select Role</label>
-                          <select class="form-control border-primary" [(ngModel)]="role" required id="role" name="role">
-                            <option [ngValue]="role" *ngFor="let role of roles">
-                              {{ role.name }}
-                            </option>
-                          </select>
-                        </fieldset>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6">
-                      <div class="form-check">
-                        <label>Status</label><br />
-                        <label class="radio-inline mr-1">
-                          <input type="radio" name="isActive" [(ngModel)]="user.active" value="true"
-                            ng-checked="!user.active" />
-                          Active
-                        </label>
-                        <label class="radio-inline">
-                          <input type="radio" name="isActive" [(ngModel)]="user.active" value="false" />
-                          Inactive
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-actions center">
-                  <button type="button" class="btn btn-raised btn-primary mr-1" (click)="onSaveConfirm()"
-                    routerLink="/user-management" [disabled]="!registerForm.valid">
-                    <i class="fa fa-check-square-o"></i> Save
-                  </button>
-                  <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/user-management">
-                    <i class="ft-x"></i> Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-
 <ngx-spinner></ngx-spinner>
 
 <section id="image" class="mt-5">
@@ -107,12 +6,12 @@
       <div class="col-md-6">
         <div class="card">
           <div class="card-body">
-            <h2 class="text-center mb-4">User Login</h2>
+            <h2 class="text-center mb-4">Registration Form</h2>
             <form #registerForm="ngForm" class="form" novalidate>
               <div class="form-body">
                 <div class="form-group">
                   <label class="form-control-label" for="username">
-                    <span *ngIf="user.username == undefined || user.username == ''" style="color: red">*</span>User
+                    <span *ngIf="user.username == undefined || user.username == ''" style="color: red">*</span>
                     Name
                   </label>
                   <span class="text-muted danger" *ngIf="!username.valid && (username.dirty || username.touched)">
@@ -127,7 +26,7 @@
                  <div class="form-group">
                       <label class="form-control-label" for="email">
                         <span *ngIf="user.email == undefined || user.email =='' "
-                          style="color: red">*</span>Email</label>
+                          style="color: red">*</span>Email ID</label>
                       <span class=" text-muted danger"
                         *ngIf="!email.valid && (email.dirty || email.touched)">
                         is required!
@@ -135,7 +34,58 @@
                       <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control border-primary" name="email"
                         [(ngModel)]="user.email" ngModel #email="ngModel" required>
                    </div>
-                <!--  -->
+                   <div class="form-group">
+                    <label class="form-control-label" for="mobile">
+                      <span *ngIf="user.mobile == undefined || user.mobile =='' " style="color: red">*</span>
+                      
+                      Phone Number</label>
+                      
+                    <span class=" text-muted danger"
+                      *ngIf="!mobile.valid && (mobile.dirty || mobile.touched)">
+                      <span *ngIf="mobile.errors.required">is required!</span>
+                      <span *ngIf="mobile.errors.pattern"> Mobile No must be like 123-456-7890</span>
+                    </span>
+                                            
+                    <input required type="tel"  id="mobile" class="form-control border-primary" name="mobile"
+                      [(ngModel)]="user.mobile" ngModel #mobile="ngModel"
+                       pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" required>
+
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="state">
+                      <span *ngIf="user.state == undefined || user.state == ''" style="color: red">*</span>
+                     State
+                    </label>
+                    <span class="text-muted danger" *ngIf="!state.valid && (state.dirty || state.touched)">
+                      is required!
+                    </span>
+                    <input type="text" id="state" class="form-control" name="state" [(ngModel)]="user.state"
+                      ngModel #state="ngModel" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-control-label" for="city">
+                      <span *ngIf="user.city == undefined || user.city == ''" style="color: red">*</span>
+                     City
+                    </label>
+                    <span class="text-muted danger" *ngIf="!city.valid && (city.dirty || city.touched)">
+                      is required!
+                    </span>
+                    <input type="text" id="city" class="form-control" name="city" [(ngModel)]="user.city"
+                      ngModel #city="ngModel" required />
+                  </div>
+                  <div class="form-group">
+                    <label class="form-control-label" for="Organization">
+                      <span *ngIf="user.Organization == undefined || user.Organization == ''" style="color: red">*</span>
+                     Organization
+                    </label>
+                    <span class="text-muted danger" *ngIf="!Organization.valid && (Organization.dirty || Organization.touched)">
+                      is required!
+                    </span>
+                    <input type="text" id="Organization" class="form-control" name="Organization" [(ngModel)]="user.Organization"
+                      ngModel #Organization="ngModel" required />
+                  </div>
+
                 <div class="form-group">
                   <label class="form-control-label" for="password">
                     <span *ngIf="user.password == undefined || user.password == ''" style="color: red">*</span>
@@ -147,7 +97,17 @@
                   <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password"
                     ngModel #password="ngModel" required />
                 </div>
-
+                <div class="form-group">
+                  <label class="form-control-label" for="reenterPassword">
+                    <span *ngIf="user.reenterPassword == undefined || user.reenterPassword == ''" style="color: red">*</span>
+                    Re-Enter Password
+                  </label>
+                  <span class="text-muted danger" *ngIf="!reenterPassword.valid && (reenterPassword.dirty || reenterPassword.touched)">
+                    is required!
+                  </span>
+                  <input type="reenterPassword" id="reenterPassword" class="form-control" name="reenterPassword" [(ngModel)]="user.reenterPassword"
+                    ngModel #reenterPassword="ngModel" required />
+                </div>
                 <div class="form-group">
                   <label for="roleSelect">Select Role</label>
                   <select class="form-control" [(ngModel)]="role" required id="role" name="role">
@@ -173,18 +133,10 @@
                 </div>
               </div>
 
-              <!-- <div class="form-actions center mt-4">
-                <button type="button" class="btn btn-primary mr-2" (click)="onSaveConfirm()" [disabled]="!registerForm.valid">
-                  <i class="fa fa-check-square-o"></i> Save
-                </button>
-                <button type="button" class="btn btn-warning" routerLink="/user-management">
-                  <i class="ft-x"></i> Cancel
-                </button>
-              </div> -->
               <div class="form-actions center">
                 <button type="button" class="btn btn-raised btn-primary mr-1" (click)="onSaveConfirm()"
                   routerLink="/pages/login" [disabled]="!registerForm.valid">
-                  <i class="fa fa-check-square-o"></i> Submit
+                  <i class="fa fa-check-square-o"></i> Register
                 </button>
                 <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/pages/login">
                   <i class="ft-x"></i> Login

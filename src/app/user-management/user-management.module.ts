@@ -9,8 +9,9 @@ import{UserManagementComponent} from'./user-management.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { AddUserManagementComponent } from './add-user-management/add-user-management.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { UserManagementForDashboardComponent } from './user-management-for-dashboard/user-management-for-dashboard.component';
 @NgModule({
-  declarations: [UserManagementComponent, UpdateUserComponent, AddUserManagementComponent],
+  declarations: [UserManagementComponent, UpdateUserComponent, AddUserManagementComponent, UserManagementForDashboardComponent],
   imports: [
     CommonModule,
     UserManagementRoutingModule,

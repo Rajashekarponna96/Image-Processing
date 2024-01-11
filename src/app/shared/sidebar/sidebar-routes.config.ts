@@ -7,7 +7,7 @@ export const ROUTES: RouteInfo[] = [
      { path: '/store/createstore', title: 'Image Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
 
     // { path: '/store/createstore', title: 'Store Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-   // { path: '/user-management', title: 'User Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+    { path: '/user-management', title: 'User Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
    // { path: '/kiosk/createkiosk', title: 'kiosk Management ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     //{ path: '/endpoints', title: 'End Points ', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },  
 //    { path: '/user-management', title: 'Reports ', icon: 'ft-user', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },

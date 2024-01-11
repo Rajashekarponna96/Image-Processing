@@ -6,11 +6,30 @@ export class UserAccount{
 
 	password:string;
 
+	firstName:string;
+
+	lastName:string;
+
+	email:string;
+
+	mobile:string;
+
 	role:string;
 
 	active:boolean;
 
 	feature:string;
-  email: string;
+
+	passLength:string;
+	
+	storeInfo:string;
+
+    state:string;
+	
+    city:string;
+	
+	Organization:string;
+	
+	reenterPassword:string;
     
 }
