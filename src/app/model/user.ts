@@ -28,7 +28,7 @@ export class UserAccount{
 	
     city:string;
 	
-	Organization:string;
+	organization:string;
 	
 	reenterPassword:string;
     
