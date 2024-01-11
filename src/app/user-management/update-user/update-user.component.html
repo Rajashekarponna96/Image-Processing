@@ -1,118 +1,259 @@
 <section id="image">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header pb-2">
-                <h4 class="card-title" id="basic-layout-colored-form-control">User
-                    Profile</h4>
+  <div class=row>
+    <div class=" col-md-12 ">
+      <div class="row">
+        <div class="container-fluid">
+          <div class="row text-left">
+            <div class="col-md-8">
+              <div class="content-header" style="font-size: 20px">User Management</div>
+              <br>
+              <p class="content-sub-header"> <a routerLink="/dashboard"><span
+                    style="font-size: 15px">Home</span></a>
+                <span style="font-size: 15px">/Create User</span>
 
+              </p>
             </div>
-            <div class="card-content">
-                <div class="px-3">
 
-                    <form class="form">
-                        <div class="form-body">
-                            <h4 class="form-section"><i class="ft-info"></i> About User
-                            </h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="firstName">First Name</label>
-                                        <input type="text" id="firstName" class="form-control border-primary"
-                                            name="firstName" [(ngModel)]="user.firstName">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="lastName">Last Name</label>
-                                        <input type="text" id="lastName" class="form-control border-primary"
-                                            name="lastName" [(ngModel)]="user.lastName">
-                                    </div>
-                                </div>
-                            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+      
+        <div class="card-body">
+          <div class="form-group">
+            <div class="col-md-12">
 
-                            <h4 class="form-section"><i class="ft-mail"></i> Contact
-                                Info & Bio</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="userinput5">Email</label>
-                                        <input class="form-control border-primary" type="email" id="email"
-                                            [(ngModel)]=user.email name="email">
-                                    </div>
-                                </div>
+              <form  class="form" #addClassForm="ngForm" novalidate>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Phone Number</label>
-                                        <input matInput class="form-control border-primary" id="phoneNumber" type="text"
-                                            name="phoneNumber" [(ngModel)]="user.phoneNumber" maxlength="10" numberOnly>
+                
+                <div class="form-body">
+                  <button type="button" class="btn btn-raised btn-primary mr-2" routerLink="/user-management">
+                    <i class="ft-align-justify"></i> UsersList
+                  </button>
+                 
+                  <!-- <h4 class="form-section"><i class="ft-info"></i> Info & Bio
+                  </h4> -->
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="firstName">
+                          <span *ngIf="user.firstName == undefined || user.firstName =='' "
+                            style="color: red">*</span>Name</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!firstName.valid && (firstName.dirty || firstName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="firstName" class="form-control border-primary" name="firstName"
+                          [(ngModel)]="user.firstName" ngModel #firstName="ngModel" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="lastName">
+                          <span *ngIf="user.lastName == undefined || user.lastName =='' " style="color: red">*</span>
+                          Organization</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!lastName.valid && (lastName.dirty || lastName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="lastName" class="form-control border-primary" name="lastName"
+                          [(ngModel)]="user.lastName" ngModel #lastName="ngModel" required>
+                      </div>
+                    </div>
+                  </div>
+		            <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="email">
+                          <span *ngIf="user.email == undefined || user.email =='' "
+                            style="color: red">*</span>Email ID</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!email.valid && (email.dirty || email.touched)">
+                          is required!
+                        </span>
+                        <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control border-primary" name="email"
+                          [(ngModel)]="user.email" ngModel #email="ngModel" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="mobile">
+                          <span *ngIf="user.mobile == undefined || user.mobile =='' " style="color: red">*</span>
+                          
+                          Phone Number</label>
+                          
+                        <span class=" text-muted danger"
+                          *ngIf="!mobile.valid && (mobile.dirty || mobile.touched)">
+                          <span *ngIf="mobile.errors.required">is required!</span>
+                          <span *ngIf="mobile.errors.pattern"> Mobile No must be like 123-456-7890</span>
+                        </span>
+                                                
+                        <input required type="tel"  id="mobile" class="form-control border-primary" name="mobile"
+                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel"
+                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" required>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="firstName">
+                          <span *ngIf="user.firstName == undefined || user.firstName =='' "
+                            style="color: red">*</span>State</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!firstName.valid && (firstName.dirty || firstName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="firstName" class="form-control border-primary" name="firstName"
+                          [(ngModel)]="user.firstName" ngModel #firstName="ngModel" required>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="lastName">
+                          <span *ngIf="user.lastName == undefined || user.lastName =='' " style="color: red">*</span>
+                          City</label>
+                        <span class=" text-muted danger"
+                          *ngIf="!lastName.valid && (lastName.dirty || lastName.touched)">
+                          is required!
+                        </span>
+                        <input type="text" id="lastName" class="form-control border-primary" name="lastName"
+                          [(ngModel)]="user.lastName" ngModel #lastName="ngModel" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="roleSelect">Select Role</label>
+                          <select class="form-control border-primary" [(ngModel)]="user.role" required id="role" name="role">
+                            <option value="OWNER">Owner</option>
+                            <option value="STORE_ADMIN">Store Admin</option>
+                            <option value="SUPER_ADMIN">Super Admin</option>
+                            <option value="manager">Manager</option>
+                            <option value="DIRECTOR_OF_OPERATION">Director Of Operation</option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <fieldset class="form-group">
+                          <label for="roleSelect">Select Password criteria</label>
+                          <select class="form-control border-primary" [(ngModel)]="user.passLength" required id="passLength" name="passLength">
+                            <option Value="four">
+                              4 DIGITS </option>
+                              <option value= "six" >6 DIGITS</option>
+                          </select>
+                        </fieldset>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">
+                          <span *ngIf="user.password == undefined || user.password =='' " style="color: red">*</span>
+                          Password</label>
+                          
+                        <span class=" text-muted danger"
+                          *ngIf="!password.valid && (password.dirty || password.touched)" >
+                          is required!
+                        </span>
+                        <input type="password" id="password" class="form-control border-primary" name="password"
+                          [(ngModel)]="user.password" ngModel #password="ngModel" required
+                           pattern="^[0-9]*$" [maxlength]="user.passLength" [minlength]="user.passLength">
+                      </div>
+                    </div>
+                   
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="form-control-label" for="password">
+                          <span *ngIf="user.password == undefined || user.password =='' " style="color: red">*</span>
+                          Re-Enter Password</label>
+                          
+                        <span class=" text-muted danger"
+                          *ngIf="!password.valid && (password.dirty || password.touched)" >
+                          is required!
+                        </span>
+                        <input type="password" id="password" class="form-control border-primary" name="password"
+                          [(ngModel)]="user.password" ngModel #password="ngModel" required
+                           pattern="^[0-9]*$" [maxlength]="user.passLength" [minlength]="user.passLength">
+                      </div>
+                    </div>
+                    
+                    </div>
+
+                  <!-- <h4 class="form-section"><i class=""></i> Login Credentials
+                  </h4> -->
+                  
+
+                  
+
+                    
+                    <!-- <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-check">
+                        <label>Status</label><br> <label class="radio-inline mr-1">
+                          <input type="radio" name="isActive" [(ngModel)]="user.active" [value]=true
+                            ng-checked="!user.active"> Active
+                        </label> 
+                        <label class="radio-inline"> <input type="radio" name="isActive"
+                            [(ngModel)]="user.active" [value]=false> Inactive
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div> -->
 
 
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <fieldset class="form-group" for="referredBy">
-                                            <label>Select User</label>
-                                            <select class="form-control" required id="referredBy" name="referredBy"
-                                                [(ngModel)]="user.role">
-                                                <option>Select User</option>
-                                                <option>Admin</option>
-                                                <option>User</option>
-
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-
-                                    <!-- <div *ngIf="user.role=='Admin'" class=" mb-1">
-            
-                                    <label>PassWord</label>
-                                    <input class="form-control border-primary" id="password" type="text" name="password"
-                                      [(ngModel)]="user.password">
-            
-                                  </div> -->
-                                    <div *ngIf="user.role=='User'" class=" mb-1">
-
-                                        <label>Department Name</label>
-                                        <input class="form-control border-primary" id="departmentName" type="text"
-                                            name="departmentName" [(ngModel)]="user.departmentName">
-
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label class="d-block">Status</label>
+                      <div class="input-group">
+                        <div class="custom-control custom-radio d-inline-block float-left">
+                          <input type="radio" checked id="active" name="active" class="custom-control-input"
+                            [value]=true [(ngModel)]="user.active">
+                          <label class="custom-control-label" for="active">Active</label>
                         </div>
-                        <div class="form-group col-12 mb-2">
-                            <div class="form-check">
-                                <label>Status</label><br> <label class="radio-inline">
-                                    <input type="radio" name="isActive" [(ngModel)]="user.active" value=true
-                                        ng-checked="!user.active">Active
-                                </label> <label class="radio-inline"> <input type="radio" name="isActive"
-                                        [(ngModel)]="user.active" value=false>Inactive
-                                </label>
-                            </div>
+                        <div class="custom-control custom-radio d-inline-block float-left ml-1">
+                          <input type="radio" id="inactive" name="inactive" class="custom-control-input"
+                            [value]=false [(ngModel)]="user.active">
+                          <label class="custom-control-label" for="inactive">In Active</label>
                         </div>
-                        <div class="form-actions center">
-                            <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/user-management">
-                                <i class="ft-x"></i> Cancel
-                            </button>
-                            <button type="button" class="btn btn-raised btn-primary" (click)="updateUserManagement()"
-                                routerLink="/user-management">
-                                <i class="fa fa-check-square-o"></i> Update
-                            </button>
-                        </div>
-                    </form>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
 
                 </div>
+
+
+
+                <div class="form-actions center">
+                  <button type="button" class="btn btn-raised btn-primary mr-1" (click)=" onSaveConfirm()"
+                  [disabled]="!addClassForm.valid">
+                  <i class="fa fa-check-square-o"></i> Save
+                </button>
+                  <button type="reset" class="btn btn-raised btn-warning mr-1" routerLink="/user-management">
+                    <i class="ft-x"></i> Cancel
+                  </button>
+                 
+                </div>
+              </form>
             </div>
+          </div>
         </div>
+
+
+      </div>
     </div>
+  </div>
 </section>
+

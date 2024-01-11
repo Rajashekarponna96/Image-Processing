@@ -1,3 +1,4 @@
+// import { Component, OnInit } from '@angular/core';
 import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 
 import swal from 'sweetalert2';
@@ -11,15 +12,13 @@ import { data } from 'app/shared/data/smart-data-table';
 import { Role } from 'app/model/role';
 import { NgForm } from '@angular/forms';
 
-
-
 @Component({
-  selector: 'app-user-management',
-  templateUrl: './user-management.component.html',
-  providers: [NGXToastrService]
-
+  selector: 'app-user-management-for-dashboard',
+  templateUrl: './user-management-for-dashboard.component.html',
+  styleUrls: ['./user-management-for-dashboard.component.scss']
 })
-export class UserManagementComponent implements OnInit {
+export class UserManagementForDashboardComponent implements OnInit {
+
   @ViewChild("aregisterForm", null) addClassForm: NgForm;
   httpOptions = {
     headers: new HttpHeaders({
@@ -34,6 +33,7 @@ export class UserManagementComponent implements OnInit {
   users: UserAccount[];
 
   user1 =  new UserAccount();
+  storename:string=localStorage.getItem("STORENAME");
   
   
 
@@ -69,8 +69,9 @@ export class UserManagementComponent implements OnInit {
   }
 
   getUserList() {
+    
 
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/all', this.httpOptions);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/store/'+this.storename, this.httpOptions);
   }
 
   // gerUserdata(id:number){
@@ -177,6 +178,6 @@ export class UserManagementComponent implements OnInit {
     this.getAllUsersList();
   }
 
+  }
 
 
-}

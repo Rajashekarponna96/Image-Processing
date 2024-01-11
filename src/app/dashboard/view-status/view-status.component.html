@@ -1,44 +1,53 @@
-<ngx-spinner ></ngx-spinner>
-<section id="simple">
-  <div class="row text-left">
-    <div class="col-sm-12">
-      <div class="card">
-          <div class="card-header pb-2">
-              <h4 class="card-title" id="basic-layout-colored-form-control">URL Details: {{appURL}}</h4>
-              <button type="button"class="btn btn-raised btn-warning"                      
-              routerLink="/dashboard">
-              <i class="ft-x"></i> Back
-          </button>
+<ngx-spinner></ngx-spinner>
+<section id="minimal-statistics-bg">
+  
+<div  class="row">
+  <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+		<div class="card gradient-blackberry">
+			<div class="card-content">
+				<div class="card-body pt-2 pb-0">
+					<div class="media">
+						<div class="media-body white text-center">
+								<button type="button" class="btn btn-raised " style="color:white"
+								routerLink="/reports/assessmentreport">
+								Hyderabad</button>
+						</div>
           </div>
-        <div class="card-body">
-          <div class="col-sm-12">
-
-            <table class="table table-responsive-md ">
-              <thead>
-                <tr>
-                  <th>Id</th>
-                  <th>Status</th>
-                  <th>Latency</th>
-                  <th>DNS LookUp Time</th>
-                  <th>TCP IP ConnectTime</th>
-                  <th>Date & Time</th>
-                </tr> 
-              </thead>
-              <tbody *ngFor="let status of statuses; index as i">
-                <tr>
-                  <td>{{i+1}}</td>
-                  <td>{{status.status}}</td>
-                  <td>{{status.responseTime}}ms</td>
-                  <td>{{status.dnsLookupTime}}ms</td>
-                  <td>{{status.tcpIPConnectTime}}ms</td>
-                  <td>{{status.createdAt|date:'dd-MM-yyyy HH:mm:ss'}}</td>
-                 
-                </tr>
-              </tbody>
-            </table>
+				</div>
+			</div>
+		</div>
+	</div>
+  <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+		<div class="card gradient-blackberry">
+			<div class="card-content">
+				<div class="card-body pt-2 pb-0">
+					<div class="media">
+						<div class="media-body white text-center">
+								<button type="button" class="btn btn-raised " style="color:white"
+								routerLink="/reports/assessmentreport">
+								Warangal</button>
+						</div>
+						</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+  <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+		<div class="card gradient-blackberry">
+			<div class="card-content">
+				<div class="card-body pt-2 pb-0">
+					<div class="media">
+						<div class="media-body white text-center">
+								<button type="button" class="btn btn-raised " style="color:white"
+								routerLink="/reports/assessmentreport">
+								Suryapet</button>
+						</div>
           </div>
-        </div>
-      </div>
-    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+  
   </div>
+
 </section>

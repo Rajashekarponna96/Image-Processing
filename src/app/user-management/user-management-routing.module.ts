@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserManagementComponent } from './user-management.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { AddUserManagementComponent } from './add-user-management/add-user-management.component';
-
+import { UserManagementForDashboardComponent } from './user-management-for-dashboard/user-management-for-dashboard.component';
 
 
 
@@ -32,7 +32,17 @@ const routes: Routes = [
       title: 'add-user-management'
     },
     
-  }
+  },
+  {
+    path: 'user-management-for-dashboard',
+     component: UserManagementForDashboardComponent,
+    data: {
+      title: 'user-management-for-dashboard'
+    },
+    
+  },
+
+
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

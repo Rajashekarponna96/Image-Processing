@@ -42,6 +42,9 @@ export class NGXToastrService {
         this.toastr.error(message);
     
     }
+    typeCustommessage(message){
+        this.toastr.warning(message)
+    }
 
     // Custom Type
     typeCustom() {

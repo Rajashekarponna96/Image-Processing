@@ -5,6 +5,7 @@ import { UserAccount } from 'app/model/user';
 import { environment } from 'environments/environment';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { Role } from 'app/model/role';
+import { NgForm } from '@angular/forms';
 @Component({
     selector: 'app-register-page',
     templateUrl: './register-page.component.html',
@@ -15,6 +16,7 @@ import { Role } from 'app/model/role';
 export class RegisterPageComponent implements OnInit{
 
   show: boolean;
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
 
   httpOptions = {
     headers: new HttpHeaders({

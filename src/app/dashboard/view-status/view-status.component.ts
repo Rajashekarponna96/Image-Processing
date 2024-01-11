@@ -46,8 +46,7 @@ export class ViewStatusComponent implements OnInit {
       
           }  
   ngOnInit() {
-    this.spinner.show();
-    this.getAllStatusListByAppId();
+    
   }
 
 }
