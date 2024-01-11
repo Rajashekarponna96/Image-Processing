@@ -36,28 +36,28 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="firstName">
-                          <span *ngIf="user.firstName == undefined || user.firstName =='' "
+                        <label class="form-control-label" for="username">
+                          <span *ngIf="user.username == undefined || user.username =='' "
                             style="color: red">*</span>Name</label>
                         <span class=" text-muted danger"
-                          *ngIf="!firstName.valid && (firstName.dirty || firstName.touched)">
+                          *ngIf="!username.valid && (username.dirty || username.touched)">
                           is required!
                         </span>
-                        <input type="text" id="firstName" class="form-control border-primary" name="firstName"
-                          [(ngModel)]="user.firstName" ngModel #firstName="ngModel" required>
+                        <input type="text" id="username" class="form-control border-primary" name="username"
+                          [(ngModel)]="user.username" ngModel #username="ngModel" required>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="lastName">
-                          <span *ngIf="user.lastName == undefined || user.lastName =='' " style="color: red">*</span>
+                        <label class="form-control-label" for="organization">
+                          <span *ngIf="user.organization == undefined || user.organization =='' " style="color: red">*</span>
                           Organization</label>
                         <span class=" text-muted danger"
-                          *ngIf="!lastName.valid && (lastName.dirty || lastName.touched)">
+                          *ngIf="!organization.valid && (organization.dirty || organization.touched)">
                           is required!
                         </span>
-                        <input type="text" id="lastName" class="form-control border-primary" name="lastName"
-                          [(ngModel)]="user.lastName" ngModel #lastName="ngModel" required>
+                        <input type="text" id="organization" class="form-control border-primary" name="organization"
+                          [(ngModel)]="user.organization" ngModel #organization="ngModel" required>
                       </div>
                     </div>
                   </div>
@@ -98,28 +98,28 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="firstName">
-                          <span *ngIf="user.firstName == undefined || user.firstName =='' "
+                        <label class="form-control-label" for="state">
+                          <span *ngIf="user.state == undefined || user.state =='' "
                             style="color: red">*</span>State</label>
                         <span class=" text-muted danger"
-                          *ngIf="!firstName.valid && (firstName.dirty || firstName.touched)">
+                          *ngIf="!state.valid && (state.dirty || state.touched)">
                           is required!
                         </span>
-                        <input type="text" id="firstName" class="form-control border-primary" name="firstName"
-                          [(ngModel)]="user.firstName" ngModel #firstName="ngModel" required>
+                        <input type="text" id="state" class="form-control border-primary" name="state"
+                          [(ngModel)]="user.state" ngModel #state="ngModel" required>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="lastName">
-                          <span *ngIf="user.lastName == undefined || user.lastName =='' " style="color: red">*</span>
+                        <label class="form-control-label" for="city">
+                          <span *ngIf="user.city == undefined || user.city =='' " style="color: red">*</span>
                           City</label>
                         <span class=" text-muted danger"
-                          *ngIf="!lastName.valid && (lastName.dirty || lastName.touched)">
+                          *ngIf="!city.valid && (city.dirty || city.touched)">
                           is required!
                         </span>
-                        <input type="text" id="lastName" class="form-control border-primary" name="lastName"
-                          [(ngModel)]="user.lastName" ngModel #lastName="ngModel" required>
+                        <input type="text" id="city" class="form-control border-primary" name="city"
+                          [(ngModel)]="user.city" ngModel #city="ngModel" required>
                       </div>
                     </div>
                   </div>
@@ -173,16 +173,16 @@
                    
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="password">
-                          <span *ngIf="user.password == undefined || user.password =='' " style="color: red">*</span>
+                        <label class="form-control-label" for="reenterPassword">
+                          <span *ngIf="user.reenterPassword == undefined || user.reenterPassword =='' " style="color: red">*</span>
                           Re-Enter Password</label>
                           
                         <span class=" text-muted danger"
-                          *ngIf="!password.valid && (password.dirty || password.touched)" >
+                          *ngIf="!reenterPassword.valid && (reenterPassword.dirty || reenterPassword.touched)" >
                           is required!
                         </span>
-                        <input type="password" id="password" class="form-control border-primary" name="password"
-                          [(ngModel)]="user.password" ngModel #password="ngModel" required
+                        <input type="reenterPassword" id="reenterPassword" class="form-control border-primary" name="reenterPassword"
+                          [(ngModel)]="user.reenterPassword" ngModel #reenterPassword="ngModel" required
                            pattern="^[0-9]*$" [maxlength]="user.passLength" [minlength]="user.passLength">
                       </div>
                     </div>
