@@ -16,7 +16,7 @@ import { NgForm } from '@angular/forms';
 export class RegisterPageComponent implements OnInit{
 
   show: boolean;
-  @ViewChild("addClassForm", null) addClassForm: NgForm;
+  @ViewChild("registerForm", null) registerForm: NgForm;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -36,24 +36,24 @@ export class RegisterPageComponent implements OnInit{
 
   constructor(private http: HttpClient, private router: Router, private service: NGXToastrService, private changeDetectorRefs: ChangeDetectorRef) {
     this.show = false;
-    this.getAllUsersList();
+   // this.getAllUsersList();
   }
-  getUserList() {
+  // getUserList() {
 
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/getusers', this.httpOptions);
-  }
+  //   return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/user/list', this.httpOptions);
+  // }
 
-  getAllUsersList() {
-    return this.getUserList().
-      subscribe((data) => {
-        console.log(data);
-        this.users = data;
-        this.changeDetectorRefs.markForCheck();
-      });
-  }
+  // getAllUsersList() {
+  //   return this.getUserList().
+  //     subscribe((data) => {
+  //       console.log(data);
+  //       this.users = data;
+  //       this.changeDetectorRefs.markForCheck();
+  //     });
+  // }
   onSaveConfirm() {
-    this.user.role = this.role.name;
-    this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/userInfo/', this.user, this.httpOptions).subscribe(
+    //this.user.role = this.role.name;
+    this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/user/', this.user, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
@@ -68,7 +68,7 @@ export class RegisterPageComponent implements OnInit{
         this.service.typeWarning();
       });
     console.log(JSON.stringify(this.user));
-    this.getAllUsersList();
+   // this.getAllUsersList();
   }
   showPassword() {
     this.show = !this.show;
@@ -87,8 +87,8 @@ export class RegisterPageComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.getAllUsersList();
-    this.getAllRolesList();
+   // this.getAllUsersList();
+    //this.getAllRolesList();
   }
 
 

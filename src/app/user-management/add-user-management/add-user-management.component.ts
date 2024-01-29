@@ -47,7 +47,7 @@ export class AddUserManagementComponent implements OnInit {
   }
   getUserList() {
 
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/all', this.httpOptions);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/user/list', this.httpOptions);
   }
 
   getAllUsersList() {
@@ -67,7 +67,7 @@ export class AddUserManagementComponent implements OnInit {
 
    
 
-    this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/userInfo/', this.user, this.httpOptions).subscribe(
+    this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/user/', this.user, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);

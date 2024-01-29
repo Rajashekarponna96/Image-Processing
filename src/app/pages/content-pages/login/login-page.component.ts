@@ -62,10 +62,10 @@ export class LoginPageComponent {
     user.email = this.email;
  
     // user.username = this.username;
-    user.feature = "Admin";
+    //user.feature = "Admin";
     //localStorage.setItem("email",email);
     //this.getIP();
-    this.http.post<UserAccount>(environment.smartSafeAPIUrl+ '/userInfo/login', user, this.httpOptions).subscribe(
+    this.http.post<UserAccount>(environment.smartSafeAPIUrl+ '/user/login', user, this.httpOptions).subscribe(
       res => {
         console.log(res);
         //event.confirm.resolve(event.newData);
@@ -74,7 +74,7 @@ export class LoginPageComponent {
           localStorage.setItem('userId', res.id+"");
           // localStorage.setItem('userName', res.username+"");
             localStorage.setItem('emaill', res.email+"");
-          localStorage.setItem('Role', res.role);
+         // localStorage.setItem('Role', res.role);
           console.dir(res);
 
          this.router.navigate(['/dashboard']);

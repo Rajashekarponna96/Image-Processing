@@ -35,23 +35,23 @@
                         [(ngModel)]="user.email" ngModel #email="ngModel" required>
                    </div>
                    <div class="form-group">
-                    <label class="form-control-label" for="mobile">
-                      <span *ngIf="user.mobile == undefined || user.mobile =='' " style="color: red">*</span>
+                    <label class="form-control-label" for="phoneNumber">
+                      <span *ngIf="user.phoneNumber == undefined || user.phoneNumber =='' " style="color: red">*</span>
                       
                       Phone Number</label>
                       
                     <span class=" text-muted danger"
-                      *ngIf="!mobile.valid && (mobile.dirty || mobile.touched)">
-                      <span *ngIf="mobile.errors.required">is required!</span>
-                      <span *ngIf="mobile.errors.pattern"> Mobile No must be like 123-456-7890</span>
+                      *ngIf="!phoneNumber.valid && (phoneNumber.dirty || phoneNumber.touched)">
+                      <span *ngIf="phoneNumber.errors.required">is required!</span>
+                      <span *ngIf="phoneNumber.errors.pattern"> Mobile No must be like 123-456-7890</span>
                     </span>
                                             
-                    <input required type="tel"  id="mobile" class="form-control border-primary" name="mobile"
-                      [(ngModel)]="user.mobile" ngModel #mobile="ngModel"
+                    <input required type="tel"  id="phoneNumber" class="form-control border-primary" name="phoneNumber"
+                      [(ngModel)]="user.phoneNumber" ngModel #phoneNumber="ngModel"
                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" required>
 
                   </div>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label class="form-control-label" for="state">
                       <span *ngIf="user.state == undefined || user.state == ''" style="color: red">*</span>
                      State
@@ -61,9 +61,9 @@
                     </span>
                     <input type="text" id="state" class="form-control" name="state" [(ngModel)]="user.state"
                       ngModel #state="ngModel" required />
-                  </div>
+                  </div> -->
 
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label class="form-control-label" for="city">
                       <span *ngIf="user.city == undefined || user.city == ''" style="color: red">*</span>
                      City
@@ -73,7 +73,7 @@
                     </span>
                     <input type="text" id="city" class="form-control" name="city" [(ngModel)]="user.city"
                       ngModel #city="ngModel" required />
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <label class="form-control-label" for="organization">
                       <span *ngIf="user.organization == undefined || user.organization == ''" style="color: red">*</span>
@@ -97,7 +97,7 @@
                   <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password"
                     ngModel #password="ngModel" required />
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label class="form-control-label" for="reenterPassword">
                     <span *ngIf="user.reenterPassword == undefined || user.reenterPassword == ''" style="color: red">*</span>
                     Re-Enter Password
@@ -107,15 +107,15 @@
                   </span>
                   <input type="reenterPassword" id="reenterPassword" class="form-control" name="reenterPassword" [(ngModel)]="user.reenterPassword"
                     ngModel #reenterPassword="ngModel" required />
-                </div>
-                <div class="form-group">
+                </div> -->
+                <!-- <div class="form-group">
                   <label for="roleSelect">Select Role</label>
                   <select class="form-control" [(ngModel)]="role" required id="role" name="role">
                     <option [ngValue]="role" *ngFor="let role of roles">{{ role.name }}</option>
                   </select>
-                </div>
+                </div> -->
 
-                <div class="form-check">
+                <!-- <div class="form-check">
                   <label>Status</label><br />
                   <div class="form-check-inline">
                     <label class="form-check-label">
@@ -130,7 +130,7 @@
                       Inactive
                     </label>
                   </div>
-                </div>
+                </div> -->
               </div>
 
               <div class="form-actions center">
