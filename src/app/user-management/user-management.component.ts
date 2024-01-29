@@ -70,7 +70,7 @@ export class UserManagementComponent implements OnInit {
 
   getUserList() {
 
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/userInfo/all', this.httpOptions);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/user/list', this.httpOptions);
   }
 
   // gerUserdata(id:number){

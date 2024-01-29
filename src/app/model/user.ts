@@ -12,7 +12,7 @@ export class UserAccount{
 
 	email:string;
 
-	mobile:string;
+	phoneNumber:string
 
 	role:string;
 
