@@ -1,0 +1,34 @@
+// image.ts
+
+// Assuming you have a User class defined as well
+//import { User } from './user';
+
+export class Image {
+  id: number;
+  name: string;
+  width: number;
+  height: number;
+  size: number;
+  timestamp: Date;
+  User: any;
+}
+// user: User;
+
+//   constructor(
+//     id: number,
+//     name: string,
+//     width: number,
+//     height: number,
+//     size: number,
+//     timestamp: Date,
+//    // user: User
+//   ) {
+//     this.id = id;
+//     this.name = name;
+//     this.width = width;
+//     this.height = height;
+//     this.size = size;
+//     this.timestamp = timestamp;
+//  //   this.user = user;
+//}
+// }

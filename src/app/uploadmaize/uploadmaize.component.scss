@@ -1,0 +1,37 @@
+/* app.component.css */
+
+.upload-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; /* Add some margin to separate from the image */
+  }
+  
+  .file-input {
+    display: none; /* Hide the file input */
+  }
+  
+  .upload-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px; /* Add some space between the input and the button */
+  }
+  
+  .upload-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .image-container {
+    margin-top: 20px; /* Add some space between the upload container and the image */
+  }
+  
+  .uploaded-image {
+    max-width: 100%; /* Ensure the image fits within its container */
+    border: 1px solid #ccc; /* Add a border around the image */
+    border-radius: 4px; /* Add some border radius for a smoother look */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+  }
+  
