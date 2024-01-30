@@ -75,7 +75,7 @@ export class RegisterPageComponent implements OnInit{
   }
   getRoleList() {
 
-    return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/all');
+    return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/list');
   }
   getAllRolesList() {
     return this.getRoleList().
@@ -88,7 +88,7 @@ export class RegisterPageComponent implements OnInit{
 
   ngOnInit() {
    // this.getAllUsersList();
-    //this.getAllRolesList();
+    this.getAllRolesList();
   }
 
 

@@ -33,7 +33,7 @@ export class ChangePasswordComponent implements OnInit {
     
      this.changePasswordDto.email = localStorage.getItem('user');
        
-      this.http.post<ChangePasswordDto>(environment.smartSafeAPIUrl + "/userInfo/changePassword/"+changePasswordDto.oldPassword+'/'+changePasswordDto.newPassword, this.changePasswordDto, this.httpOptions).subscribe(
+      this.http.post<ChangePasswordDto>(environment.smartSafeAPIUrl + "/user/changePassword/"+changePasswordDto.oldPassword+'/'+changePasswordDto.newPassword, this.changePasswordDto, this.httpOptions).subscribe(
         res => {
           console.log(res);
           //event.confirm.resolve(event.newData);
