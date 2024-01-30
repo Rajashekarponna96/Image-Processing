@@ -27,8 +27,8 @@ export const Full_ROUTES: Routes = [
   },
 
   {
-    path: 'store',
-    loadChildren: () => import('../../store/store.module').then(m => m.StoreModule)
+    path: 'uploadmaize',
+    loadChildren: () => import('../../uploadmaize/uploadmaize.module').then(m => m.UploadmaizeModule)
   },
 
   {
