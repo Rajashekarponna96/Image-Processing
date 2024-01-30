@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from 'environments/environment';
 import { ChangePasswordDto } from 'app/model/ChangePasswordDto';
 import { NGXToastrService } from 'app/service/toastr.service';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-change-password',
@@ -12,6 +14,8 @@ import { NGXToastrService } from 'app/service/toastr.service';
 })
 export class ChangePasswordComponent implements OnInit {
 
+  @ViewChild("forgotPasswordForm", null) forgotPasswordForm: NgForm;
+
   httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*' ,
@@ -20,20 +24,21 @@ export class ChangePasswordComponent implements OnInit {
       'Authorization': 'Basic ' + btoa('dashboard:$dashboardPWD$')
     })
   } 
-  
+
   changePasswordDto=new ChangePasswordDto();
 
-   
   constructor(private http: HttpClient,private service:NGXToastrService) { }
-  onSubmitConfirm() {
+  
+  onSubmitConfirm( changePasswordDto: ChangePasswordDto) {
     
-       this.changePasswordDto.email = localStorage.getItem('email');
-
-      this.http.post<ChangePasswordDto>(environment.smartSafeAPIUrl + '/changePassword', this.changePasswordDto, this.httpOptions).subscribe(
+     this.changePasswordDto.email = localStorage.getItem('user');
+       
+      this.http.post<ChangePasswordDto>(environment.smartSafeAPIUrl + "/userInfo/changePassword/"+changePasswordDto.oldPassword+'/'+changePasswordDto.newPassword, this.changePasswordDto, this.httpOptions).subscribe(
         res => {
           console.log(res);
           //event.confirm.resolve(event.newData);
-this.service.passwordChangeSuccess();
+          this.service.passwordChangeSuccess();
+          this.forgotPasswordForm.reset();
         },
         (err: HttpErrorResponse) => {
           if (err.error instanceof Error) {
@@ -41,7 +46,8 @@ this.service.passwordChangeSuccess();
           } else {
             console.log("Server-side error occured.");
           }
-          this.service.typeWarning();
+          this.service.typeCustommessage(err.error.message);
+
         });
   
     
