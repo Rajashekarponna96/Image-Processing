@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
   placement = "bottom-right";
   public isCollapsed = true;
   layoutSub: Subscription;
+  username:String=localStorage.getItem('userName');
   @Output()
   toggleHideSidebar = new EventEmitter<Object>();
 
@@ -24,6 +25,7 @@ export class NavbarComponent implements OnInit, AfterViewInit, OnDestroy {
     
   }
 
+ 
   ngOnInit() {
     
   }

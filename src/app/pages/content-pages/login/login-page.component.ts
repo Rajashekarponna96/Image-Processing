@@ -70,9 +70,10 @@ export class LoginPageComponent {
         console.log(res);
         //event.confirm.resolve(event.newData);
         if (res) {
+          
           localStorage.setItem('user', JSON.stringify(user));
           localStorage.setItem('userId', res.id+"");
-          // localStorage.setItem('userName', res.username+"");
+         localStorage.setItem('userName', res.username+"");
             localStorage.setItem('emaill', res.email+"");
          // localStorage.setItem('Role', res.role);
           console.dir(res);
