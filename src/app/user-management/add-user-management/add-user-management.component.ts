@@ -6,6 +6,8 @@ import { environment } from 'environments/environment';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { Role } from 'app/model/role';
 import { NgForm } from '@angular/forms';
+import { State } from 'app/model/state';
+import { City } from 'app/model/city';
 
 @Component({
   selector: 'app-add-user-management',
@@ -32,6 +34,12 @@ export class AddUserManagementComponent implements OnInit {
   role = new Role();
   roles: Role[];
   registerForm: any;
+
+  state = new State();
+  states:State[];
+
+  city = new City();
+  citys:City[];
 
   displayStyle = "none";
   dynamicText:string;
@@ -118,6 +126,32 @@ export class AddUserManagementComponent implements OnInit {
       subscribe((data) => {
         console.log(data);
         this.roles = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+
+  getStateList() {
+
+    return this.http.get<State[]>(environment.smartSafeAPIUrl + '/state/list');
+  }
+  getAllStatesList() {
+    return this.getStateList().
+      subscribe((data) => {
+        console.log(data);
+        this.states = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+
+  getCityList() {
+
+    return this.http.get<City[]>(environment.smartSafeAPIUrl + '/city/list');
+  }
+  getAllCitysList() {
+    return this.getCityList().
+      subscribe((data) => {
+        console.log(data);
+        this.citys = data;
         this.changeDetectorRefs.markForCheck();
       });
   }

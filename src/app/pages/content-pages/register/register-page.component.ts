@@ -6,6 +6,8 @@ import { environment } from 'environments/environment';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { Role } from 'app/model/role';
 import { NgForm } from '@angular/forms';
+import { State } from 'app/model/state';
+import { City } from 'app/model/city';
 @Component({
     selector: 'app-register-page',
     templateUrl: './register-page.component.html',
@@ -33,6 +35,11 @@ export class RegisterPageComponent implements OnInit{
   role = new Role();
   roles: Role[];
 
+  state = new State();
+  states:State[];
+
+  city = new City();
+  citys:City[];
 
   constructor(private http: HttpClient, private router: Router, private service: NGXToastrService, private changeDetectorRefs: ChangeDetectorRef) {
     this.show = false;
@@ -56,6 +63,7 @@ export class RegisterPageComponent implements OnInit{
     this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/user/', this.user, this.httpOptions).subscribe(
       res => {
         console.log(res);
+        
         //event.confirm.resolve(event.newData);
         this.service.addSuccess();
       },
@@ -86,9 +94,49 @@ export class RegisterPageComponent implements OnInit{
       });
   }
 
+  getStateList() {
+
+    return this.http.get<State[]>(environment.smartSafeAPIUrl +'/state/list');
+  }
+  getAllStatesList() {
+    return this.getStateList().
+      subscribe((data) => {
+        console.log(data);
+        this.states = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+
+  // getCityList() {
+
+  //   return this.http.get<City[]>(environment.smartSafeAPIUrl + '/city/list');
+  // }
+  // getAllCitysList() {
+  //   return this.getCityList().
+  //     subscribe((data) => {
+  //       console.log(data);
+  //       this.citys = data;
+  //       this.changeDetectorRefs.markForCheck();
+  //     });
+  // }
+
+  getSelectedCitysByStatename(state: string) {
+    return this.http.get<City[]>(environment.smartSafeAPIUrl +'/city/list'+state);
+  }
+
+  onCitiesSelected(state: string) {
+    this.getSelectedCitysByStatename(state).
+      subscribe((data) => {
+        this.citys = data;
+
+      })
+  }
+
+
   ngOnInit() {
    // this.getAllUsersList();
     this.getAllRolesList();
+    this.getAllStatesList();
   }
 
 

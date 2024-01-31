@@ -28,7 +28,7 @@
                 
                 <div class="form-body">
                   <button type="button" class="btn btn-raised btn-primary mr-2" routerLink="/user-management">
-                    <i class="ft-align-justify"></i> UsersList
+                    <i class="ft-align-justify"></i>UsersList
                   </button>
                  
                   <!-- <h4 class="form-section"><i class="ft-info"></i> Info & Bio
@@ -77,25 +77,50 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-group">
-                        <label class="form-control-label" for="mobile">
-                          <span *ngIf="user.mobile == undefined || user.mobile =='' " style="color: red">*</span>
+                        <label class="form-control-label" for="phoneNumber">
+                          <span *ngIf="user.phoneNumber == undefined || user.phoneNumber =='' " style="color: red">*</span>
                           
                           Phone Number</label>
                           
                         <span class=" text-muted danger"
-                          *ngIf="!mobile.valid && (mobile.dirty || mobile.touched)">
-                          <span *ngIf="mobile.errors.required">is required!</span>
-                          <span *ngIf="mobile.errors.pattern"> Mobile No must be like 123-456-7890</span>
+                          *ngIf="!phoneNumber.valid && (phoneNumber.dirty || phoneNumber.touched)">
+                          <span *ngIf="phoneNumber.errors.required">is required!</span>
+                          <span *ngIf="phoneNumber.errors.pattern"> PhoneNumber No must be 10 digits</span>
                         </span>
                                                 
-                        <input required type="tel"  id="mobile" class="form-control border-primary" name="mobile"
-                          [(ngModel)]="user.mobile" ngModel #mobile="ngModel"
-                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12" required>
-
+                        <input type="tel"  id="phoneNumber" class="form-control border-primary" name="phoneNumber"
+                         [(ngModel)]="user.phoneNumber" ngModel #phoneNumber="ngModel" pattern="[0-9]{10}" maxlength="10" required>
+    
                       </div>
                     </div>
                   </div>
                   <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="stateSelect">State </label>
+                      <select required [(ngModel)]="state" id="state" name="state"
+                        class="form-control border-primary">
+                        <option>Select State</option>
+                        <option [ngValue]="state" *ngFor="let states of states">
+                          {{states.name}} </option>
+                      </select>
+                    </div>
+                    </div>
+                    
+                    
+                    <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="citySelect">City</label>
+                      <select required [(ngModel)]="city" id="city" name="city"
+                        class="form-control border-primary">
+                        <option>Select City</option>
+                        <option [ngValue]="city" *ngFor="let citys of citys">
+                          {{citys.name}} </option>
+                      </select>
+                    </div>
+                    </div>
+                    </div>
+                  <!-- <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label" for="state">
@@ -152,26 +177,24 @@
                       </div>
                     </div>
                     
-                  </div>
+                  </div> -->
 
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label" for="password">
-                          <span *ngIf="user.password == undefined || user.password =='' " style="color: red">*</span>
-                          Password</label>
-                          
-                        <span class=" text-muted danger"
-                          *ngIf="!password.valid && (password.dirty || password.touched)" >
+                          <span *ngIf="user.password == undefined || user.password == ''" style="color: red">*</span>
+                          Password
+                        </label>
+                        <span class="text-muted danger" *ngIf="!password.valid && (password.dirty || password.touched)">
                           is required!
                         </span>
-                        <input type="password" id="password" class="form-control border-primary" name="password"
-                          [(ngModel)]="user.password" ngModel #password="ngModel" required
-                           pattern="^[0-9]*$" [maxlength]="user.passLength" [minlength]="user.passLength">
+                        <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password"
+                          ngModel #password="ngModel" required />
                       </div>
-                    </div>
+                    </div> -->
                    
-                    <div class="col-md-6">
+                    <!-- <div class="col-md-6">
                       <div class="form-group">
                         <label class="form-control-label" for="reenterPassword">
                           <span *ngIf="user.reenterPassword == undefined || user.reenterPassword =='' " style="color: red">*</span>
@@ -186,8 +209,8 @@
                            pattern="^[0-9]*$" [maxlength]="user.passLength" [minlength]="user.passLength">
                       </div>
                     </div>
-                    
-                    </div>
+                     -->
+                    <!-- </div> -->
 
                   <!-- <h4 class="form-section"><i class=""></i> Login Credentials
                   </h4> -->
@@ -212,7 +235,7 @@
                 </div> -->
 
 
-                <div class="row">
+                <!-- <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label class="d-block">Status</label>
@@ -230,7 +253,7 @@
                       </div>
                     </div>
                   </div>
-                </div> 
+                </div>  -->
 
                 </div>
 
