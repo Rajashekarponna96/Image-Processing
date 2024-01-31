@@ -76,6 +76,7 @@ export class LoginPageComponent {
          localStorage.setItem('userName', res.username+"");
             localStorage.setItem('emaill', res.email+"");
          // localStorage.setItem('Role', res.role);
+         console.log("userid is"+res.id)
           console.dir(res);
 
          this.router.navigate(['/dashboard']);
