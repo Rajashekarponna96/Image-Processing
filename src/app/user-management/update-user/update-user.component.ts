@@ -1,9 +1,12 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { environment } from 'environments/environment';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { UserAccount } from 'app/model/user';
 import { NGXToastrService } from 'app/service/toastr.service';
 import { Role } from 'app/model/role';
+import { NgForm } from '@angular/forms';
+import { State } from 'app/model/state';
+import { City } from 'app/model/city';
 
 @Component({
   selector: 'app-update-user',
@@ -12,6 +15,8 @@ import { Role } from 'app/model/role';
   providers: [NGXToastrService]
 })
 export class UpdateUserComponent implements OnInit {
+
+  @ViewChild("addClassForm", null) addClassForm: NgForm;
   
   httpOptions = {
     headers: new HttpHeaders({
@@ -26,6 +31,13 @@ export class UpdateUserComponent implements OnInit {
   users: UserAccount[];
   role = new Role();
   roles : Role[];
+
+  state = new State();
+  states:State[];
+
+  city = new City();
+  citys:City[];
+
   constructor(private http: HttpClient, private service: NGXToastrService,private changeDetectorRefs: ChangeDetectorRef) { }
   getAllRolesList() {
     return this.getRoleList().
@@ -38,6 +50,32 @@ export class UpdateUserComponent implements OnInit {
   getRoleList() {
 
     return this.http.get<Role[]>(environment.smartSafeAPIUrl + '/role/all');
+  }
+
+  getStateList() {
+
+    return this.http.get<State[]>(environment.smartSafeAPIUrl + '/state/list');
+  }
+  getAllStatesList() {
+    return this.getStateList().
+      subscribe((data) => {
+        console.log(data);
+        this.states = data;
+        this.changeDetectorRefs.markForCheck();
+      });
+  }
+
+  getCityList() {
+
+    return this.http.get<City[]>(environment.smartSafeAPIUrl + '/city/list');
+  }
+  getAllCitysList() {
+    return this.getCityList().
+      subscribe((data) => {
+        console.log(data);
+        this.citys = data;
+        this.changeDetectorRefs.markForCheck();
+      });
   }
   ngOnInit() {
     
@@ -52,7 +90,7 @@ export class UpdateUserComponent implements OnInit {
     console.log('this is Id of current user ' + a)
     console.log(this.user.id)
     this.getAllRolesList();
-    return this.http.get<UserAccount>(environment.smartSafeAPIUrl + "/userInfo/" + a,this.httpOptions).subscribe(data =>{
+    return this.http.get<UserAccount>(environment.smartSafeAPIUrl + "/user/" + a,this.httpOptions).subscribe(data =>{
         // console.log(user.firstName + ' ' +user.lastName + ' ' + user.role + ' ' + user.username)
         console.log(data)
         // console.log('printed data above ')
@@ -68,7 +106,7 @@ export class UpdateUserComponent implements OnInit {
  
   getUserList(){
     
-    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl+'/userInfo/all', this.httpOptions);
+    return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl+'/user/list', this.httpOptions);
   }
 
     getAllUsersList() {
@@ -88,7 +126,7 @@ export class UpdateUserComponent implements OnInit {
     
 
 
-      this.http.put<UserAccount>(environment.smartSafeAPIUrl +"/userInfo/"+this.user.id, this.user, this.httpOptions).subscribe(
+      this.http.put<UserAccount>(environment.smartSafeAPIUrl +"/user/"+this.user.id, this.user, this.httpOptions).subscribe(
         res => {
           console.log(res);
           //event.confirm.resolve(event.newData);
