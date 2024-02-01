@@ -125,7 +125,7 @@ export class RegisterPageComponent implements OnInit{
   }
   
   onCitiesSelected(state: string) {
-    alert("Selected state name: " + JSON.stringify(state));
+   // alert("Selected state name: " + JSON.stringify(state));
   
     this.getSelectedCitiesByStateName(state)
       .subscribe((data) => {

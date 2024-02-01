@@ -132,7 +132,7 @@ export class AddUserManagementComponent implements OnInit {
 
   getStateList() {
 
-    return this.http.get<State[]>(environment.smartSafeAPIUrl + '/state/list');
+    return this.http.get<State[]>(environment.smartSafeAPIUrl +'/state/list');
   }
   getAllStatesList() {
     return this.getStateList().
@@ -143,22 +143,23 @@ export class AddUserManagementComponent implements OnInit {
       });
   }
 
-  getCityList() {
-
-    return this.http.get<City[]>(environment.smartSafeAPIUrl + '/city/list');
+  getSelectedCitiesByStateName(state: string) {
+    return this.http.get<City[]>(environment.smartSafeAPIUrl+'/city/list/'+state);
   }
-  getAllCitysList() {
-    return this.getCityList().
-      subscribe((data) => {
-        console.log(data);
+  
+  onCitiesSelected(state: string) {
+   // alert("Selected state name: " + JSON.stringify(state));
+  
+    this.getSelectedCitiesByStateName(state)
+      .subscribe((data) => {
         this.citys = data;
-        this.changeDetectorRefs.markForCheck();
       });
   }
 
   ngOnInit() {
     
     this.getAllRolesList();
+    this.getAllStatesList();
     
   }
   
