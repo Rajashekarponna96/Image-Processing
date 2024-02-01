@@ -24,7 +24,7 @@ export class UserAccount{
 	
 	storeInfo:string;
 
-    state:string;
+    state:any;
 	
     city:string;
 	

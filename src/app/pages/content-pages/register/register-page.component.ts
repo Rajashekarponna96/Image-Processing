@@ -120,16 +120,17 @@ export class RegisterPageComponent implements OnInit{
   //     });
   // }
 
-  getSelectedCitysByStatename(state: string) {
-    return this.http.get<City[]>(environment.smartSafeAPIUrl +'/city/list'+state);
+  getSelectedCitiesByStateName(state: string) {
+    return this.http.get<City[]>(environment.smartSafeAPIUrl+'/city/list/'+state);
   }
-
+  
   onCitiesSelected(state: string) {
-    this.getSelectedCitysByStatename(state).
-      subscribe((data) => {
+    alert("Selected state name: " + JSON.stringify(state));
+  
+    this.getSelectedCitiesByStateName(state)
+      .subscribe((data) => {
         this.citys = data;
-
-      })
+      });
   }
 
 
