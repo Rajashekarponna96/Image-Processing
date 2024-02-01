@@ -150,7 +150,15 @@
                   </select>
                 </div>
 
-                
+                <div class="form-group">
+                  <label for="citySelect">City</label>
+                  <select required [(ngModel)]="city" id="city" name="city"
+                    class="form-control border-primary">
+                    <option>Select City</option>
+                    <option [ngValue]="city" *ngFor="let citys of citys">
+                      {{citys.name}} </option>
+                  </select>
+                </div>
               </div>
 
               <div class="form-actions center">
