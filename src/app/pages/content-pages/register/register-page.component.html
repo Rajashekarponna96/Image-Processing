@@ -134,7 +134,7 @@
                   <label for="stateSelect">State</label>
                   <select required [(ngModel)]="state" (change)="onCitiesSelected($event.target.value)" id="state" name="state" class="form-control border-primary">
                     <option>Select State</option>
-                    <option *ngFor="let state of states" [ngValue]="state">
+                    <option *ngFor="let state of states" [value]="state.id">
                       {{ state.name }}
                     </option>
                   </select>
@@ -144,7 +144,7 @@
                   <label for="citySelect">City</label>
                   <select [(ngModel)]="selectedCity" id="citySelect" name="citySelect" class="form-control border-primary">
                     <option>Select City</option>
-                    <option *ngFor="let city of citys" [ngValue]="city">
+                    <option *ngFor="let city of citys" [value]="city.id">
                       {{ city.name }}
                     </option>
                   </select>
