@@ -2,12 +2,15 @@
 <section id="image">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-6">
+      <div class="row full-height-vh m-0">
+      <div class="col-md-12">
         <div class="card">
           <div class="card-body">
             <h2 class="text-center mb-4">Registration Form</h2>
             <form #registerForm="ngForm" class="form" novalidate>
               <div class="form-body">
+                <div class="row">
+                  <div class="col-md-6">
                 <div class="form-group">
                   <label class="form-control-label" for="username">
                     <span *ngIf="user.username == undefined || user.username == ''" style="color: red">*</span>
@@ -19,6 +22,8 @@
                   <input type="text" id="username" class="form-control" name="username" [(ngModel)]="user.username"
                     ngModel #username="ngModel" required />
                 </div>
+              </div>
+              <div class="col-md-6">
                  <div class="form-group">
                       <label class="form-control-label" for="email">
                         <span *ngIf="user.email == undefined || user.email =='' "
@@ -30,6 +35,10 @@
                       <input type="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" class="form-control border-primary" name="email"
                         [(ngModel)]="user.email" ngModel #email="ngModel" required>
                    </div>
+                  </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
                    <div class="form-group">
                     <label class="form-control-label" for="phoneNumber">
                       <span *ngIf="user.phoneNumber == undefined || user.phoneNumber =='' " style="color: red">*</span>
@@ -46,7 +55,8 @@
                      [(ngModel)]="user.phoneNumber" ngModel #phoneNumber="ngModel" pattern="[0-9]{10}" maxlength="10" required>
 
                   </div>
-                  
+                </div>
+                <div class="col-md-6">
                   <div class="form-group">
                     <label class="form-control-label" for="organization">
                       <span *ngIf="user.organization == undefined || user.organization == ''" style="color: red">*</span>
@@ -58,7 +68,10 @@
                     <input type="text" id="organization" class="form-control" name="organization" [(ngModel)]="user.organization"
                       ngModel #organization="ngModel" required />
                   </div>
-
+                </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
                 <div class="form-group">
                   <label class="form-control-label" for="password">
                     <span *ngIf="user.password == undefined || user.password == ''" style="color: red">*</span>
@@ -70,7 +83,8 @@
                   <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password"
                     ngModel #password="ngModel" required />
                 </div>
-              
+              </div>
+              <div class="col-md-6">
                 <div class="form-group">
                   <label for="stateSelect">State</label>
                   <select required [(ngModel)]="state" (change)="onCitiesSelected($event.target.value)" id="state" name="state" class="form-control border-primary">
@@ -80,7 +94,10 @@
                     </option>
                   </select>
                 </div>
-                
+              </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
                 <div class="form-group">
                   <label for="citySelect">City</label>
                   <select required [(ngModel)]="city" id="city" name="city"
@@ -91,7 +108,8 @@
                   </select>
                 </div>
               </div>
-
+            </div>
+            </div>
               <div class="form-actions center">
                 <button type="button" class="btn btn-raised btn-primary mr-1" (click)="onSaveConfirm()"
                   routerLink="/pages/login" [disabled]="!registerForm.valid">
@@ -105,6 +123,7 @@
             </form>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </div>
