@@ -60,11 +60,6 @@ export class LoginPageComponent {
     var user = new UserAccount();
     user.password = this.password;
     user.email = this.email;
- 
-    // user.username = this.username;
-    //user.feature = "Admin";
-    //localStorage.setItem("email",email);
-    //this.getIP();
     this.http.post<UserAccount>(environment.smartSafeAPIUrl+ '/user/login', user, this.httpOptions).subscribe(
       res => {
         console.log(res);
@@ -105,12 +100,6 @@ export class LoginPageComponent {
 
   }
 
-
-  // getIP() {
-  //   this.masterDataService.getIPAddress().subscribe((res: any) => {
-  //     this.ipAddress = res.ip;
-  //   });
-  // }
 
 }
 

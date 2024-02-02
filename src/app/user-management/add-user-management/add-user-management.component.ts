@@ -170,17 +170,6 @@ export class AddUserManagementComponent implements OnInit {
     this.displayStyle= "none";
     this.onSaveConfirm1();
    
-    // if(this.dynamicText=="User Created Succesfully")
-    // {
-    //   this.onSaveConfirm1();
-    // }
   }
-  closePopup1() {
-    this.displayStyle1 = "none";
-    if(this.dynamicText2=="Hey.... Now, You need to assign User to Store...")
-    {
-      this.router.navigateByUrl('/assign/assign-user-to-store');
-    }
-  }
-
+ 
 }

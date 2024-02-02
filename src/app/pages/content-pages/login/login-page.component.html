@@ -20,15 +20,6 @@
                   </p>
                   <form #loginForm="ngForm" class="form" novalidate>
 
-
-                    <!-- <div>
-                      <label class="form-control-label" for="usernamee">
-                        <span *ngIf="username == undefined ||username =='' " style="color: red">*</span>User Name
-                      </label>
-                      <span class=" text-muted danger"
-                        *ngIf="!usernamee.valid && (usernamee.dirty ||usernamee.touched)">
-                        is required!
-                      </span> -->
                       <div>
                         <label class="form-control-label" for="emaill">
                           <span *ngIf="emaill == undefined ||emaill =='' " style="color: red">*</span>User Name
@@ -37,8 +28,6 @@
                           *ngIf="!emaill.valid && (emaill.dirty ||emaill.touched)">
                           is required!
                         </span>
-                      <!-- <input type="username" id="username" name="username" [(ngModel)]="username"
-                        class="form-control mb-3" placeholder=" username" ngModel #usernamee="ngModel" required /> -->
                         <input type="email" id="email" name="email" [(ngModel)]="email"
                         class="form-control mb-3" placeholder=" email" ngModel #emaill="ngModel" required />
 
@@ -70,10 +59,7 @@
                         </label>
                       </div>
                     </div>
-                    <!-- <div class="forgot-password-option">
-                      <a [routerLink]="['/pages/forgotpassword']" class="text-decoration-none text-primary">Forgot
-                        Password ?</a>
-                    </div> -->
+                  
                   </div>
                   <div class="fg-actions d-flex justify-content-between">
                     <div class="login-btn">
@@ -82,9 +68,7 @@
                       </button>
                     </div>
                     <div class="recover-pass">
-                      <!-- <button class="btn btn-primary" (click)=" onLogin(email,password)" [disabled]="!loginForm.valid">
-                        Login
-                      </button> -->
+                      
                       <button class="btn btn-primary" (click)=" onLogin(email,password)">
                         Submit
                       </button>

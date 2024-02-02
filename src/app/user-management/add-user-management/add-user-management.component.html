@@ -94,64 +94,6 @@
                       </div>
                     </div>
                   </div>
-                  <!-- <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="state">
-                          <span *ngIf="user.state == undefined || user.state =='' "
-                            style="color: red">*</span>State</label>
-                        <span class=" text-muted danger"
-                          *ngIf="!state.valid && (state.dirty || state.touched)">
-                          is required!
-                        </span>
-                        <input type="text" id="state" class="form-control border-primary" name="state"
-                          [(ngModel)]="user.state" ngModel #state="ngModel" required>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="form-control-label" for="city">
-                          <span *ngIf="user.city == undefined || user.city =='' " style="color: red">*</span>
-                          City</label>
-                        <span class=" text-muted danger"
-                          *ngIf="!city.valid && (city.dirty || city.touched)">
-                          is required!
-                        </span>
-                        <input type="text" id="city" class="form-control border-primary" name="city"
-                          [(ngModel)]="user.city" ngModel #city="ngModel" required>
-                      </div>
-                    </div>
-                  </div> -->
-                  <!-- <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <fieldset class="form-group">
-                          <label for="roleSelect">Select Role</label>
-                          <select class="form-control border-primary" [(ngModel)]="user.role" required id="role" name="role">
-                            <option value="OWNER">Owner</option>
-                            <option value="STORE_ADMIN">Store Admin</option>
-                            <option value="SUPER_ADMIN">Super Admin</option>
-                            <option value="manager">Manager</option>
-                            <option value="DIRECTOR_OF_OPERATION">Director Of Operation</option>
-                          </select>
-                        </fieldset>
-                      </div>
-                    </div> 
-
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <fieldset class="form-group">
-                          <label for="roleSelect">Select Password criteria</label>
-                          <select class="form-control border-primary" [(ngModel)]="user.passLength" required id="passLength" name="passLength">
-                            <option Value="four">
-                              4 DIGITS </option>
-                              <option value= "six" >6 DIGITS</option>
-                          </select>
-                        </fieldset>
-                      </div>
-                    </div>
-                    
-                  </div> -->
 
                   <div class="row">
                     <div class="col-md-6">
@@ -192,51 +134,8 @@
                       </div>
                     </div>
                     </div>
-                  <!-- <h4 class="form-section"><i class=""></i> Login Credentials
-                  </h4> -->
-                  
-
-                  
-
-                    
-                    <!-- <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-check">
-                        <label>Status</label><br> <label class="radio-inline mr-1">
-                          <input type="radio" name="isActive" [(ngModel)]="user.active" [value]=true
-                            ng-checked="!user.active"> Active
-                        </label> 
-                        <label class="radio-inline"> <input type="radio" name="isActive"
-                            [(ngModel)]="user.active" [value]=false> Inactive
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div> -->
-
-
-                <!-- <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label class="d-block">Status</label>
-                      <div class="input-group">
-                        <div class="custom-control custom-radio d-inline-block float-left">
-                          <input type="radio" checked id="active" name="active" class="custom-control-input"
-                            [value]=true [(ngModel)]="user.active">
-                          <label class="custom-control-label" for="active">Active</label>
-                        </div>
-                        <div class="custom-control custom-radio d-inline-block float-left ml-1">
-                          <input type="radio" id="inactive" name="inactive" class="custom-control-input"
-                            [value]=false [(ngModel)]="user.active">
-                          <label class="custom-control-label" for="inactive">In Active</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>  -->
 
                 </div>
-
 
 
                 <div class="form-actions center">
@@ -260,41 +159,3 @@
   </div>
 </section>
 
-<!-- <div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle}">
-  <div class="modal-dialog" role="document">
-      <div class="modal-content1">
-          <div class="modal-header">
-              <h5 class="modal-title" style="color:white">Status</h5>
-          </div>
-          <div class="modal-body" style="color:white">
-              <h2 style="font-size: 20px;"><strong>{{dynamicText}}</strong></h2>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class ="btn btn-raised btn-primary mr-1" (click)="closePopup()">
-                 Ok
-              </button>
-          </div>
-      </div>
-  </div>
-</div> 
-
-<div class="modal1" tabindex="-1" role="dialog" [ngStyle]="{'display':displayStyle1}">
-  <div class="modal-dialog" role="document">
-      <div class="modal-content1">
-          <div class="modal-header">
-              <h5 class="modal-title" style="color:white">Status</h5>
-          </div>
-          <div class="modal-body" style="color:white">
-              <h2 style="font-size: 20px;"><strong>{{dynamicText2}}</strong></h2>
-          </div>
-          <div class="modal-footer">
-              <button type="button" class ="btn btn-raised btn-primary mr-1" (click)="closePopup1()">
-                 Yes
-              </button>
-              <button type="button" class ="btn btn-raised btn-warning" routerLink="/dashboard">
-                No
-             </button>
-          </div>
-      </div>
-  </div>
-</div>  -->

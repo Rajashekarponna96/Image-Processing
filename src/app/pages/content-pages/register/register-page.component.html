@@ -19,9 +19,6 @@
                   <input type="text" id="username" class="form-control" name="username" [(ngModel)]="user.username"
                     ngModel #username="ngModel" required />
                 </div>
-
-                <!--  -->
-                 <!--  -->
                  <div class="form-group">
                       <label class="form-control-label" for="email">
                         <span *ngIf="user.email == undefined || user.email =='' "
@@ -49,29 +46,7 @@
                      [(ngModel)]="user.phoneNumber" ngModel #phoneNumber="ngModel" pattern="[0-9]{10}" maxlength="10" required>
 
                   </div>
-                  <!-- <div class="form-group">
-                    <label class="form-control-label" for="state">
-                      <span *ngIf="user.state == undefined || user.state == ''" style="color: red">*</span>
-                     State
-                    </label>
-                    <span class="text-muted danger" *ngIf="!state.valid && (state.dirty || state.touched)">
-                      is required!
-                    </span>
-                    <input type="text" id="state" class="form-control" name="state" [(ngModel)]="user.state"
-                      ngModel #state="ngModel" required />
-                  </div> -->
-
-                  <!-- <div class="form-group">
-                    <label class="form-control-label" for="city">
-                      <span *ngIf="user.city == undefined || user.city == ''" style="color: red">*</span>
-                     City
-                    </label>
-                    <span class="text-muted danger" *ngIf="!city.valid && (city.dirty || city.touched)">
-                      is required!
-                    </span>
-                    <input type="text" id="city" class="form-control" name="city" [(ngModel)]="user.city"
-                      ngModel #city="ngModel" required />
-                  </div> -->
+                  
                   <div class="form-group">
                     <label class="form-control-label" for="organization">
                       <span *ngIf="user.organization == undefined || user.organization == ''" style="color: red">*</span>
@@ -95,41 +70,7 @@
                   <input type="password" id="password" class="form-control" name="password" [(ngModel)]="user.password"
                     ngModel #password="ngModel" required />
                 </div>
-                <!-- <div class="form-group">
-                  <label class="form-control-label" for="reenterPassword">
-                    <span *ngIf="user.reenterPassword == undefined || user.reenterPassword == ''" style="color: red">*</span>
-                    Re-Enter Password
-                  </label>
-                  <span class="text-muted danger" *ngIf="!reenterPassword.valid && (reenterPassword.dirty || reenterPassword.touched)">
-                    is required!
-                  </span>
-                  <input type="reenterPassword" id="reenterPassword" class="form-control" name="reenterPassword" [(ngModel)]="user.reenterPassword"
-                    ngModel #reenterPassword="ngModel" required />
-                </div> -->
-                <!-- <div class="form-group">
-                  <label for="roleSelect">Select Role</label>
-                  <select class="form-control" [(ngModel)]="role" required id="role" name="role">
-                    <option [ngValue]="role" *ngFor="let role of roles">{{ role.name }}</option>
-                  </select>
-                </div> -->
-
-                <!-- <div class="form-check">
-                  <label>Status</label><br />
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="isActive" [(ngModel)]="user.active" value="true"
-                        ng-checked="!user.active" />
-                      Active
-                    </label>
-                  </div>
-                  <div class="form-check-inline">
-                    <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="isActive" [(ngModel)]="user.active" value="false" />
-                      Inactive
-                    </label>
-                  </div>
-                </div> -->
-               
+              
                 <div class="form-group">
                   <label for="stateSelect">State</label>
                   <select required [(ngModel)]="state" (change)="onCitiesSelected($event.target.value)" id="state" name="state" class="form-control border-primary">
@@ -140,16 +81,6 @@
                   </select>
                 </div>
                 
-                <!-- <div *ngIf="citys && citys.length > 0">
-                  <label for="citySelect">City</label>
-                  <select [(ngModel)]="selectedCity" id="citySelect" name="citySelect" class="form-control border-primary">
-                    <option>Select City</option>
-                    <option *ngFor="let city of citys" [value]="city.name">
-                      {{ city.name }}
-                    </option>
-                  </select>
-                </div> -->
-
                 <div class="form-group">
                   <label for="citySelect">City</label>
                   <select required [(ngModel)]="city" id="city" name="city"
@@ -169,14 +100,6 @@
                 <button type="button" class="btn btn-raised btn-warning mr-1" routerLink="/pages/login">
                   <i class="ft-x"></i> Login
                 </button>
-                <!-- <button type="button" class="btn btn-success mr-1" (click)="onSaveConfirm()"
-        routerLink="/user-management" [disabled]="!registerForm.valid">
-  <i class="fa fa-check-square-o"></i> Submit
-</button>
-
-<button type="button" class="btn btn-danger mr-1" routerLink="/pages/login">
-  <i class="ft-x"></i> Login
-</button> -->
 
               </div>
             </form>
