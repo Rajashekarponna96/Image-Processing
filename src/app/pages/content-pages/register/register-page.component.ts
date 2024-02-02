@@ -45,19 +45,7 @@ export class RegisterPageComponent implements OnInit{
     this.show = false;
    // this.getAllUsersList();
   }
-  // getUserList() {
-
-  //   return this.http.get<UserAccount[]>(environment.smartSafeAPIUrl + '/user/list', this.httpOptions);
-  // }
-
-  // getAllUsersList() {
-  //   return this.getUserList().
-  //     subscribe((data) => {
-  //       console.log(data);
-  //       this.users = data;
-  //       this.changeDetectorRefs.markForCheck();
-  //     });
-  // }
+  
   onSaveConfirm() {
     //this.user.role = this.role.name;
     this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/user/', this.user, this.httpOptions).subscribe(
@@ -107,18 +95,6 @@ export class RegisterPageComponent implements OnInit{
       });
   }
 
-  // getCityList() {
-
-  //   return this.http.get<City[]>(environment.smartSafeAPIUrl + '/city/list');
-  // }
-  // getAllCitysList() {
-  //   return this.getCityList().
-  //     subscribe((data) => {
-  //       console.log(data);
-  //       this.citys = data;
-  //       this.changeDetectorRefs.markForCheck();
-  //     });
-  // }
 
   getSelectedCitiesByStateName(state: string) {
     return this.http.get<City[]>(environment.smartSafeAPIUrl+'/city/list/'+state);
@@ -139,29 +115,10 @@ export class RegisterPageComponent implements OnInit{
     this.getAllRolesList();
     this.getAllStatesList();
   }
-
-
-  
-
-  
-  
-  
-  
-  
-  
- 
-  
  
 }
 
-   // @ViewChild('f', {static: false}) registerForm: NgForm;
-
-    //  On submit click, reset field value
-   // onSubmit() {
-     //   this.registerForm.reset();
-   // }
-   
-
+ 
 
 
 
