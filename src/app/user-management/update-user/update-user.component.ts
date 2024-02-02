@@ -54,7 +54,7 @@ export class UpdateUserComponent implements OnInit {
 
   getStateList() {
 
-    return this.http.get<State[]>(environment.smartSafeAPIUrl + '/state/list');
+    return this.http.get<State[]>(environment.smartSafeAPIUrl +'/state/list');
   }
   getAllStatesList() {
     return this.getStateList().
@@ -65,21 +65,21 @@ export class UpdateUserComponent implements OnInit {
       });
   }
 
-  getCityList() {
-
-    return this.http.get<City[]>(environment.smartSafeAPIUrl + '/city/list');
+  getSelectedCitiesByStateName(state: string) {
+    return this.http.get<City[]>(environment.smartSafeAPIUrl+'/city/list/'+state);
   }
-  getAllCitysList() {
-    return this.getCityList().
-      subscribe((data) => {
-        console.log(data);
+  
+  onCitiesSelected(state: string) {
+   // alert("Selected state name: " + JSON.stringify(state));
+  
+    this.getSelectedCitiesByStateName(state)
+      .subscribe((data) => {
         this.citys = data;
-        this.changeDetectorRefs.markForCheck();
       });
   }
   ngOnInit() {
     
-      
+    this.getAllStatesList();  
     // this.user =  JSON.parse(localStorage.getItem('editUser'));
     this.user =  JSON.parse(localStorage.getItem('editUser'))
     console.log('print the current user')
