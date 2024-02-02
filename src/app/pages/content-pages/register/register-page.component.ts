@@ -35,7 +35,7 @@ export class RegisterPageComponent implements OnInit{
   role = new Role();
   roles: Role[];
 
-  state = new State();
+  state :  State;
   states:State[];
 
   city = new City();

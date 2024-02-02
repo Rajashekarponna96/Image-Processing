@@ -48,7 +48,7 @@
                     <span class=" text-muted danger"
                       *ngIf="!phoneNumber.valid && (phoneNumber.dirty || phoneNumber.touched)">
                       <span *ngIf="phoneNumber.errors.required">is required!</span>
-                      <span *ngIf="phoneNumber.errors.pattern"> PhoneNumber No must be 10 digits</span>
+                      <span *ngIf="phoneNumber.errors.pattern"> PhoneNo must be 10 digits</span>
                     </span>
                                             
                     <input type="tel"  id="phoneNumber" class="form-control border-primary" name="phoneNumber"
@@ -87,7 +87,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="stateSelect">State</label>
-                  <select required [(ngModel)]="state" (change)="onCitiesSelected($event.target.value)" id="state" name="state" class="form-control border-primary">
+                  <select required [(ngModel)]="user.state" (change)="onCitiesSelected($event.target.value)" id="state" name="user.state" class="form-control border-primary">
                     <option>Select State</option>
                     <option *ngFor="let state of states" [value]="state.name">
                       {{ state.name }}
@@ -100,11 +100,11 @@
                 <div class="col-md-6">
                 <div class="form-group">
                   <label for="citySelect">City</label>
-                  <select required [(ngModel)]="city" id="city" name="city"
+                  <select required [(ngModel)]="user.city" id="city" name="city"
                     class="form-control border-primary">
                     <option>Select City</option>
-                    <option [ngValue]="city" *ngFor="let citys of citys">
-                      {{citys.name}} </option>
+                    <option [ngValue]="city.name" *ngFor="let city of citys">
+                      {{city.name}} </option>
                   </select>
                 </div>
               </div>
