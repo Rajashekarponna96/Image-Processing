@@ -50,58 +50,112 @@ export class LoginPageComponent {
     this.router.navigate(['register'], { relativeTo: this.route.parent });
   }
 
-  // onLogin(username: string, password: string) {
- 
+  
   onLogin(email: string, password: string) {
- 
-  // alert("Login Successfull" + email + password);
-  // this.router.navigate(['/dashboard']);
-   this.spinner.show();
-    var user = new UserAccount();
-    user.password = this.password;
-    user.email = this.email;
-    this.http.post<UserAccount>(environment.smartSafeAPIUrl+ '/user/login', user, this.httpOptions).subscribe(
+    this.spinner.show();
+    const user = new UserAccount();
+    user.password = password;
+    user.email = email;
+    
+    this.http.post<UserAccount>(environment.smartSafeAPIUrl + '/user/login', user, this.httpOptions).subscribe(
       res => {
-        console.log(res);
-        //event.confirm.resolve(event.newData);
         if (res) {
-          
+          // Store user details in local storage
           localStorage.setItem('user', JSON.stringify(user));
-          localStorage.setItem('userId', res.id+"");
-         localStorage.setItem('userName', res.username+"");
-            localStorage.setItem('emaill', res.email+"");
-         // localStorage.setItem('Role', res.role);
-         console.log("userid is"+res.id)
-          console.dir(res);
-
-         this.router.navigate(['/dashboard']);
-          this.service.loginSuccess();
-          this.spinner.hide();
+          //localStorage.setItem('userId', res.id + "");
+          //localStorage.setItem('userName', res.username + "");
+          localStorage.setItem('email', res.email + "");
+          localStorage.setItem('roleId', res.role.id + ""); // Assuming role id is available in the response
           
+          // Navigate to different routes based on role
+          const roleId = res.role.id;
+          switch (roleId) {
+            case 1: // Admin role
+              this.router.navigate(['/admin-dashboard']);
+              break;
+            case 2: // User role
+              this.router.navigate(['/user-dashboard']);
+              break;
+            // Add more cases for other roles as needed
+            default:
+              this.router.navigate(['/dashboard']); // Default route
+              break;
+          }
+  
+          this.service.loginSuccess();
         } else {
           alert("Login failed. Invalid Credentials");
-          this.spinner.hide();            
         }
-
+        this.spinner.hide();
       },
-      (err: HttpErrorResponse) => {
+      err => {
+        console.log("Error occurred:", err);
         if (err.error instanceof Error) {
-          console.log("Client-side error occured.");
-          this.spinner.hide();
-        }
-        else {
-        //  alert("Login failed." +err.error.message);
-          console.log("Server-side error occured.");
+          console.log("Client-side error occurred.");
+        } else {
+          console.log("Server-side error occurred.");
           this.service.showMessage(err.error.message);
-          this.spinner.hide();
         }
-      });
-
-
+        this.spinner.hide();
+      }
+    );
   }
-
-
+  
 }
+
+  // onLogin(username: string, password: string) {
+ 
+  // onLogin(email: string, password: string) {
+ 
+  // // alert("Login Successfull" + email + password);
+  // // this.router.navigate(['/dashboard']);
+  //  this.spinner.show();
+  //   var user = new UserAccount();
+  //   user.password = this.password;
+  //   user.email = this.email;
+  //   this.http.post<UserAccount>(environment.smartSafeAPIUrl+ '/user/login', user, this.httpOptions).subscribe(
+  //     res => {
+  //       console.log(res);
+  //       //event.confirm.resolve(event.newData);
+  //       if (res) {
+          
+  //         localStorage.setItem('user', JSON.stringify(user));
+  //         localStorage.setItem('userId', res.id+"");
+  //        localStorage.setItem('userName', res.username+"");
+  //           localStorage.setItem('emaill', res.email+"");
+  //        // localStorage.setItem('Role', res.role);
+  //        console.log("userid is"+res.id)
+  //         console.dir(res);
+
+  //        this.router.navigate(['/dashboard']);
+  //         this.service.loginSuccess();
+  //         this.spinner.hide();
+          
+  //       } else {
+  //         alert("Login failed. Invalid Credentials");
+  //         this.spinner.hide();            
+  //       }
+
+  //     },
+  //     (err: HttpErrorResponse) => {
+  //       if (err.error instanceof Error) {
+  //         console.log("Client-side error occured.");
+  //         this.spinner.hide();
+  //       }
+  //       else {
+  //       //  alert("Login failed." +err.error.message);
+  //         console.log("Server-side error occured.");
+  //         this.service.showMessage(err.error.message);
+  //         this.spinner.hide();
+  //       }
+  //     });
+
+
+  // }
+
+
+
+
 
 
   

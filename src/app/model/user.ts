@@ -14,7 +14,8 @@ export class UserAccount{
 
 	phoneNumber:string
 
-	role:string;
+	//role:string;
+	role: { id: number };
 
 	active:boolean;
 
