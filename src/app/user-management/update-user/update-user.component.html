@@ -98,26 +98,26 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="stateSelect">State</label>
-                        <select required [(ngModel)]="state" (change)="onCitiesSelected($event.target.value)" id="state" name="state" class="form-control border-primary">
+                        <select required [(ngModel)]="user.state" (change)="onCitiesSelected($event.target.value)" id="state" name="user.state" class="form-control border-primary">
                           <option>Select State</option>
                           <option *ngFor="let state of states" [value]="state.name">
                             {{ state.name }}
                           </option>
                         </select>
                       </div>
-                      </div>
+                    </div>
                     
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label for="citySelect">City</label>
-                          <select required [(ngModel)]="city" id="city" name="city"
-                            class="form-control border-primary">
-                            <option>Select City</option>
-                            <option [ngValue]="city" *ngFor="let citys of citys">
-                              {{citys.name}} </option>
-                          </select>
-                        </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="citySelect">City</label>
+                        <select required [(ngModel)]="user.city" id="city" name="city"
+                          class="form-control border-primary">
+                          <option>Select City</option>
+                          <option [ngValue]="city.name" *ngFor="let city of citys">
+                            {{city.name}} </option>
+                        </select>
                       </div>
+                    </div>
                     </div>
                   <!-- <div class="row">
                     <div class="col-md-6">
