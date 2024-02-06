@@ -8,6 +8,8 @@ import { customAnimations } from "../animations/custom-animations";
 import { ConfigService } from '../services/config.service';
 import { LayoutService } from '../services/layout.service';
 import { Subscription } from 'rxjs';
+import { Features } from "app/model/features";
+import { features } from "process";
 
 @Component({
   selector: "app-sidebar",
@@ -26,7 +28,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
   logoUrl = 'assets/img/Logo_Hoi.png';
   public config: any = {};
   layoutSub: Subscription;
-
+  feature : Features[];
 
   constructor(
     private elementRef: ElementRef,
@@ -37,6 +39,8 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     private configService: ConfigService,
     private layoutService: LayoutService
   ) {
+    this.menuItems = ROUTES;
+    
     if (this.depth === undefined) {
       this.depth = 0;
       this.expanded = true;
@@ -69,15 +73,58 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
 
         }
       });
+      this.featurelist();
+  }
+  featurelist(){
+    this.feature=JSON.parse(localStorage.getItem('features'));
+    console.log("Feature list......"+JSON.stringify(this.feature));
+  //  console.log("Feature list......"+this.feature);
+
+  //   if (this.feature && Array.isArray(this.feature)) {
+  //     console.log("checking condition is------------------");
+  //     for (let i = 0; i < this.feature.length; i++) {
+             
+
+  //     for (let i = 0; i < this.menuItems.length; i++) {
+  //       const menuItem = this.menuItems[i];
+  //       console.log('Menu Item at index ' + i + ':', menuItem.title);
+  
+  //       // Check if the menu item is in the user's features
+  //       const hasAccess = this.feature.some(feature => feature.name === menuItem.title);
+  //       console.log("checking condition is------------------"+hasAccess);
+  
+  //       // Update the submenu property based on access
+  //       menuItem.submenu = hasAccess ? menuItem.submenu : [];
+  // }
+  //     }
+  //   }
+  //   else {
+  //     console.error('Invalid or missing features array in localStorage');
+  //   }
+  }
+  isFeatureEnable(featureName:string){
+    const featureArray: Features[] = JSON.parse(JSON.stringify(this.feature));
+    console.log("feature array size is"+featureArray.length);
+    console.log("feature name is"+featureName);
+    for (let i = 0; i <= featureArray.length; i++) {
+      
+      //const featureArray: Features[] = JSON.parse(JSON.stringify(this.feature));
+      
+      if(featureName === featureArray[i].name){
+        
+        console.log("feature name list are "+featureArray[i].name);
+        
+        return true;
+      }
+    }
+    //console.log("featutre is not found");
+    return false;
+
 
   }
-
-
   ngOnInit() {
     this.config = this.configService.templateConf;
-    this.menuItems = ROUTES;
-
-
+   
 
     if (this.config.layout.sidebar.backgroundColor === 'white') {
       this.logoUrl = 'assets/img/Logo_Hoi.png';
@@ -130,4 +177,5 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
     if (path.indexOf("forms/ngx") !== -1)
       this.router.navigate(["forms/ngx/wizard"], { skipLocationChange: false });
   }
+
 }
