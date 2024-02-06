@@ -7,6 +7,7 @@ import { UserAccount } from 'app/model/user';
 import { MasterDataService } from 'app/service/master-data.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { NGXToastrService } from 'app/service/toastr.service';
+import { Features } from 'app/model/features';
 
 @Component({
   selector: 'app-login-page',
@@ -32,7 +33,8 @@ export class LoginPageComponent {
   password: string;
   // username: string;
   email:string;
-  
+  feature = new Features();
+  features:Features[];
 
   constructor(private router: Router,
     private route: ActivatedRoute,private service: NGXToastrService, private http: HttpClient,private spinner:NgxSpinnerService, private masterDataService: MasterDataService) { }
@@ -73,8 +75,8 @@ export class LoginPageComponent {
          // localStorage.setItem('Role', res.role);
          console.log("userid is"+res.id)
           console.dir(res);
-
-         this.router.navigate(['/dashboard']);
+          this.getAllFeaturesList();
+         //this.router.navigate(['/dashboard']);
           this.service.loginSuccess();
           this.spinner.hide();
           
@@ -98,6 +100,28 @@ export class LoginPageComponent {
       });
 
 
+  }
+
+  getFeaturesList() {
+    
+    let userid = localStorage.getItem('userId');
+    return this.http.get<Features[]>(environment.smartSafeAPIUrl + '/user/'+userid+'/features');
+  }
+  getAllFeaturesList() {
+    return this.getFeaturesList().
+      subscribe((data) => {
+        console.log(data);
+        this.features = data;
+
+        this.features.forEach(feature => {
+          console.log(feature.name); // Accessing feature name
+        });
+        
+
+        localStorage.setItem('features',JSON.stringify(this.features));
+        this.router.navigate(['/dashboard']);
+        
+      });
   }
 
 
