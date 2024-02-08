@@ -2,22 +2,22 @@
 <section id="minimal-statistics-bg">
   
 <div  class="row">
-  <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+  <div class="col-xl-4 col-lg-6 col-md-6 col-12" *ngFor="let state of states">
 		<div class="card gradient-pomegranate">
 			<div class="card-content">
 				<div class="card-body pt-2 pb-0">
 					<div class="media">
 						<div class="media-body white text-center">
 								<button type="button" class="btn btn-raised " style="color:white"
-								routerLink="/dashboard/view-status">
-								Telangana</button>
+								(click)="navigateToStatus(state)">
+								{{state}}</button>
 						</div>
           </div>
 				</div>
 			</div>
 		</div>
 	</div>
-  <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+  <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-12">
 		<div class="card gradient-pomegranate">
 			<div class="card-content">
 				<div class="card-body pt-2 pb-0">
@@ -79,6 +79,6 @@
           </div>
         </div>
         </div>
-    </div>
+    </div> -->
     </div>
 </section>

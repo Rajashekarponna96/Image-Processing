@@ -2,7 +2,7 @@
 <section id="minimal-statistics-bg">
   
 <div  class="row">
-  <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+  <div class="col-xl-4 col-lg-6 col-md-6 col-12" *ngFor="let city of cities">
 		<div class="card gradient-blackberry">
 			<div class="card-content">
 				<div class="card-body pt-2 pb-0">
@@ -10,14 +10,14 @@
 						<div class="media-body white text-center">
 								<button type="button" class="btn btn-raised " style="color:white"
 								routerLink="/reports/assessmentreport">
-								Hyderabad</button>
+								{{city.name}}</button>
 						</div>
           </div>
 				</div>
 			</div>
 		</div>
 	</div>
-  <div class="col-xl-4 col-lg-6 col-md-6 col-12">
+  <!-- <div class="col-xl-4 col-lg-6 col-md-6 col-12">
 		<div class="card gradient-blackberry">
 			<div class="card-content">
 				<div class="card-body pt-2 pb-0">
@@ -47,7 +47,7 @@
 			</div>
 		</div>
 	</div>
-  
+   -->
   </div>
 
 </section>
