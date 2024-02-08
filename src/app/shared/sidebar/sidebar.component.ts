@@ -73,7 +73,7 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnDestroy {
 
         }
       });
-      this.featurelist();
+      //this.featurelist();
   }
   featurelist(){
     this.feature=JSON.parse(localStorage.getItem('features'));
