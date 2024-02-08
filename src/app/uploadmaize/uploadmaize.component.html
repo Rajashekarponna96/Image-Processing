@@ -1,33 +1,84 @@
 <section id="image">
-  <div class=row>
-    <div class=" col-md-12 ">
-      <div class="row">
-        <div class="container-fluid">
-          <div class="row text-left">
-            <div class="col-md-8">
-              <div class="content-header" style="font-size: 20px">User Management</div>
-              <br>
-              <p class="content-sub-header"> <a routerLink="/dashboard"><span style="font-size: 15px">Home</span></a>
-                <span style="font-size: 15px">/Upload Image</span>
+    <div class=row>
+        <div class=" col-md-12 ">
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="row text-left">
+                        <div class="col-md-8">
+                            <div class="content-header" style="font-size: 20px">User Management</div>
+                            <br>
+                            <p class="content-sub-header"> <a routerLink="/dashboard"><span
+                                        style="font-size: 15px">Home</span></a>
+                                <span style="font-size: 15px">/Users List</span>
 
-              </p>
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+              
+
+            <div class="card-header">
+              <h4 style="color: rgb(6, 6, 12);"> <strong>Upload Image</strong></h4>
+              <div class="col-sm-12">
+                <input type="file" (change)="onFileSelected($event)">
+                <button (click)="uploadImage()" class="btn btn-raised btn-primary">Upload</button>
+                <br><br><br><br><br>
+              </div>
             </div>
 
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-header">
-          <div class="col-sm-12">
+            
+              
+                          <div class="col-sm-12">
+                              <table class="table table-responsive-md text-center">
+                                  <thead>
+                                      <tr>
+                                          <th>Id</th>
+                                          <th>Name</th>
+                                          <th>Width</th> 
+                                           <th>Height</th> 
+                                           <th>Size</th>
+                                          <!-- <th>Action</th> -->
+      
+                                      </tr>
+                                  </thead>
+                                  <tbody *ngFor="let image of images; index as i">
+                                      <tr>
+                                          <td>{{i+1}} </td>
+                                          <td>{{image.name}}</td>
+                                           <td>{{image.width}}</td> 
+                                           <td>{{image.height}}</td> 
+                                           <td>{{image.size}}</td>
+      
+                                          
+                                          <!-- <td><button type="button" class="btn btn-raised" disabled
+                                                  style="cursor:default"
+                                                  [ngClass]="{' btn-primary' : user.active,'btn-warning' :!user.active }">
+                                                  {{ user.active ? 'Active' : 'Inactive' }}
+                                              </button></td> -->
+                                          <!-- <td>
+                                              <a class="success p-0" data-original-title="" title=""
+                                                  (click)="editUsermanagement(user)" placement="bottom" ngbTooltip="Edit">
+                                                  <i class="ft-edit-2 font-medium-3 mr-2"></i>
+                                              </a>
+                                              <a class="danger p-0" data-original-title="" title=""
+                                                  (click)="deleteUser(user)" placement="bottom" ngbTooltip="Delete">
+                                                  <i class="icon-trash font-medium-3 mr-2"></i>
+                                              </a>
+                                          </td> -->
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      
+              
+
+           
 
 
 
-            <input type="file" (change)="onFileSelected($event)">
-            <button (click)="uploadImage()" class="btn btn-raised btn-primary">Upload</button>
-            <br><br><br><br><br>
-          </div>
-        </div>
+
       </div>
     </div>
-  </div>
 </section>
