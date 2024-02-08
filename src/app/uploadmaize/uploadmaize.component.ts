@@ -3,6 +3,8 @@ import { NGXToastrService } from "app/service/toastr.service";
 
 import { ImageServiceService } from "./image-service.service";
 import { from } from "rxjs";
+import { environment } from "environments/environment";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-uploadmaize",
@@ -13,12 +15,17 @@ import { from } from "rxjs";
 export class UploadmaizeComponent implements OnInit {
   constructor(
     private imageService: ImageServiceService,
-    private service: NGXToastrService
+    private service: NGXToastrService,
+    private http: HttpClient
   ) {}
 
-  ngOnInit() {}
+  
 
   selectedFile: File;
+  
+
+  image = new Image();
+  images:any[];
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0] as File;
@@ -44,4 +51,35 @@ export class UploadmaizeComponent implements OnInit {
       // Handle case where no file is selected
     }
   }
+
+
+  getImageList() {
+
+    return this.http.get<any []>(environment.smartSafeAPIUrl + '/image/list');
+  }
+
+  // gerUserdata(id:number){
+  //   return this.http.get<UserAccount>(environment.smartSafeAPIUrl + "/userInfo/" + id,this.httpOptions)
+  // }
+
+  getAllImageList() {
+
+
+    return this.getImageList().
+      subscribe((data) => {
+        console.log(data);
+        this.images = data;
+        
+      });
+
+  }
+
+
+
+
+
+  ngOnInit() {
+    this.getAllImageList(); 
+  }
+
 }
